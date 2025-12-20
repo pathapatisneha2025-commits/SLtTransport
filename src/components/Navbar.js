@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Navbar() {
+  const [shrink, setShrink] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
@@ -11,147 +12,146 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Shrink navbar on scroll
+  useEffect(() => {
+    const handleScroll = () => setShrink(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <style jsx="true">{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: Arial, sans-serif;
-        }
+      <nav className={`navbar ${shrink ? "shrink" : ""}`}>
+        <div className="nav-container">
 
-        .navbar {
-          background: #0f0f0f;
-          color: #fff;
-          height: 64px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 24px;
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-        }
+          {/* Logo */}
+          <Link to="/" className="logo" onClick={() => setMobileOpen(false)}>
+            <img src="/Logoimage.jpeg" alt="Logo" />
+          </Link>
 
-        .logo-container {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-        }
+          {/* Hamburger Icon */}
+          <div
+            className="mobile-menu-icon"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+          </div>
 
-        .logo-img {
-          height: 50px;
-          width: auto;
-          object-fit: contain;
-        }
+          {/* Navigation Links */}
+          <ul className={`nav-links ${mobileOpen ? "open" : ""}`}>
+            <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
+            <li><Link to="/about" onClick={() => setMobileOpen(false)}>About Us</Link></li>
+            <li><Link to="/rooms" onClick={() => setMobileOpen(false)}>Rooms</Link></li>
+            <li><Link to="/bookingpage" onClick={() => setMobileOpen(false)}>Bookings</Link></li>
+            <li><Link to="/services" onClick={() => setMobileOpen(false)}>Services</Link></li>
+            <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
+          </ul>
 
-        .logo-text {
-          font-size: 22px;
-          font-weight: bold;
-          color: #f5c518;
-        }
+        </div>
 
-        .nav-links {
-          display: flex;
-          align-items: center;
-          gap: 24px;
-        }
+        {/* Styles */}
+        <style jsx="true">{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+          }
 
-        .nav-links a {
-          color: #fff;
-          text-decoration: none;
-          font-size: 16px;
-          transition: color 0.2s;
-        }
+          .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e0dede;
+            transition: all 0.3s ease;
+            z-index: 1000;
+          }
 
-        .nav-links a:hover {
-          color: #f5c518;
-        }
+          .navbar.shrink .logo img {
+            width: 90px;
+            height: 45px;
+          }
 
-        .rent-btn {
-          background: #f5c518;
-          color: #000;
-          padding: 10px 18px;
-          border-radius: 6px;
-          font-weight: bold;
-        }
+          .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            position: relative;
+          }
 
-        .mobile-menu-icon {
-          display: none;
-          font-size: 28px;
-          cursor: pointer;
-          color: #fff;
-        }
-
-        @media (max-width: 768px) {
-          .mobile-menu-icon {
-            display: block;
+          .logo img {
+            width: 120px;
+            height: 60px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
           }
 
           .nav-links {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 64px);
-            background: #0f0f0f;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            transform: translateX(${mobileOpen ? "0" : "-100%"});
-            transition: transform 0.3s ease-in-out;
-            z-index: 2000;
+            display: flex;
+            gap: 30px;
+            list-style: none;
           }
 
-          .nav-links a {
-            font-size: 20px;
+          .nav-links li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
           }
 
-          .rent-btn {
-            font-size: 18px;
-            padding: 12px 24px;
+          .nav-links li a:hover {
+            background: #f5c518;
+            color: #000;
           }
-        }
-      `}</style>
 
-      <nav className="navbar">
-        <div className="logo-container">
-          <Link to="/">
-            <img src="/companylogo.jpeg" alt="Logo" className="logo-img" />
-          </Link>
-        </div>
+          .mobile-menu-icon {
+            display: none;
+            cursor: pointer;
+          }
 
-        <div
-          className="mobile-menu-icon"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <FiX /> : <FiMenu />}
-        </div>
+          @media (max-width: 768px) {
+            .mobile-menu-icon {
+              display: block;
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              z-index: 1100;
+              background: white;
+              border-radius: 8px;
+              padding: 4px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            }
 
-        <div className="nav-links">
-          <Link to="/" onClick={() => setMobileOpen(false)}>
-            Home
-          </Link>
-          <Link to="/services" onClick={() => setMobileOpen(false)}>
-            Services
-          </Link>
-          <Link to="/blog" onClick={() => setMobileOpen(false)}>
-            Blog
-          </Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)}>
-            Contact
-          </Link>
-          <Link
-            to="/rent"
-            className="rent-btn"
-            onClick={() => setMobileOpen(false)}
-          >
-            Rent Now
-          </Link>
-        </div>
+            .nav-links {
+              flex-direction: column;
+              overflow: hidden;
+              max-height: 0;
+              transition: max-height 0.4s ease;
+              background: rgba(255, 255, 255, 0.95);
+              backdrop-filter: blur(12px);
+              width: 100%;
+              position: absolute;
+              top: 70px;
+              left: 0;
+              gap: 12px;
+            }
+
+            .nav-links.open {
+              max-height: 500px;
+            }
+
+            .nav-links li a {
+              text-align: center;
+              padding: 15px 0;
+              display: block;
+            }
+          }
+        `}</style>
       </nav>
     </>
   );
