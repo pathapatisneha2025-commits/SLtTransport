@@ -54,11 +54,24 @@ export default function Navbar() {
           color: #f5c518;
         }
 
-        .nav-links {
-          display: flex;
-          align-items: center;
-          gap: 28px;
-        }
+       .nav-links {
+  position: fixed;        /* fixed instead of absolute */
+  top: 0;                 /* start from top */
+  left: 0;
+  width: 100%;
+  height: 100vh;          /* full viewport height */
+  background: #0f0f0f;
+  flex-direction: column;
+  align-items: center;    /* center items */
+  justify-content: center;/* center vertically */
+  gap: 18px;
+  overflow-y: auto;
+  max-height: none;       /* remove max-height */
+  transform: translateX(${mobileOpen ? '0' : '-100%'});
+  transition: transform 0.3s ease;
+  z-index: 2000;
+}
+
 
         .nav-links a {
           color: #fff;
