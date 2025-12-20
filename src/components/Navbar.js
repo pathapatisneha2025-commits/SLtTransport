@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   return (
     <>
-      <style>{`
+      <style jsx="true">{`
         * {
           margin: 0;
           padding: 0;
@@ -71,10 +78,11 @@ export default function Navbar() {
           font-weight: bold;
         }
 
-        .hamburger {
+        .mobile-menu-icon {
           display: none;
           font-size: 26px;
           cursor: pointer;
+          color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -86,7 +94,7 @@ export default function Navbar() {
             font-size: 18px;
           }
 
-          .hamburger {
+          .mobile-menu-icon {
             display: block;
           }
 
@@ -100,30 +108,50 @@ export default function Navbar() {
             align-items: flex-start;
             padding: 20px;
             gap: 18px;
-            display: none;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease;
           }
 
           .nav-links.open {
-            display: flex;
+            max-height: 500px; /* adjust as needed */
+          }
+
+          .nav-links a {
+            width: 100%;
+            display: block;
+            padding: 12px 0;
           }
         }
       `}</style>
 
       <nav className="navbar">
         <div className="logo-container">
-          <img src="/companylogo.jpeg" alt="Logo" className="logo-img" />
+          <Link to="/">
+            <img src="/companylogo.jpeg" alt="Logo" className="logo-img" />
+          </Link>
         </div>
 
-        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <Link to="/">Home</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/rent" className="rent-btn">Rent Now</Link>
+        {/* Mobile Hamburger */}
+        <div
+          className="mobile-menu-icon"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </div>
 
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
+        <div className={`nav-links ${mobileOpen ? "open" : ""}`}>
+          <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
+          <Link to="/services" onClick={() => setMobileOpen(false)}>Services</Link>
+          <Link to="/blog" onClick={() => setMobileOpen(false)}>Blog</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+          <Link
+            to="/rent"
+            className="rent-btn"
+            onClick={() => setMobileOpen(false)}
+          >
+            Rent Now
+          </Link>
         </div>
       </nav>
     </>
