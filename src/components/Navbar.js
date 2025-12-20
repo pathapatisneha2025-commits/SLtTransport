@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Navbar() {
         .navbar {
           background: #0f0f0f;
           color: #fff;
-          height: 64px; /* Fixed height */
+          height: 64px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -35,7 +36,7 @@ export default function Navbar() {
         }
 
         .logo-img {
-          height: 100%; /* Fit inside navbar */
+          height: 100%;
           width: auto;
           object-fit: contain;
         }
@@ -78,7 +79,7 @@ export default function Navbar() {
 
         @media (max-width: 768px) {
           .logo-img {
-            height: 48px; /* Fit smaller navbar */
+            height: 48px;
           }
 
           .logo-text {
@@ -114,11 +115,11 @@ export default function Navbar() {
         </div>
 
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <a href="/">Home</a>
-          <a href="/services">Services</a>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
-          <a href="/rent" className="rent-btn">Rent Now</a>
+          <Link to="/">Home</Link>
+          <Link to="/services">Services</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/rent" className="rent-btn">Rent Now</Link>
         </div>
 
         <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
