@@ -1,157 +1,135 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const [shrink, setShrink] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
-
-  // Shrink navbar on scroll
-  useEffect(() => {
-    const handleScroll = () => setShrink(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Function to close menu on link click
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <>
-      <nav className={`navbar ${shrink ? "shrink" : ""}`}>
-        <div className="nav-container">
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: Arial, sans-serif;
+        }
 
-          {/* Logo */}
-          <Link to="/" className="logo" onClick={() => setMobileOpen(false)}>
-            <img src="/Logoimage.jpeg" alt="Logo" />
-          </Link>
+        .navbar {
+          background: #0f0f0f;
+          color: #fff;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 24px;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
 
-          {/* Hamburger Icon */}
-          <div
-            className="mobile-menu-icon"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <FiX size={28} /> : <FiMenu size={28} />}
-          </div>
+        .logo-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          height: 100%;
+        }
 
-          {/* Navigation Links */}
-          <ul className={`nav-links ${mobileOpen ? "open" : ""}`}>
-            <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
-            <li><Link to="/about" onClick={() => setMobileOpen(false)}>About Us</Link></li>
-            <li><Link to="/rooms" onClick={() => setMobileOpen(false)}>Rooms</Link></li>
-            <li><Link to="/bookingpage" onClick={() => setMobileOpen(false)}>Bookings</Link></li>
-            <li><Link to="/services" onClick={() => setMobileOpen(false)}>Services</Link></li>
-            <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
-          </ul>
+        .logo-img {
+          height: 100%;
+          width: auto;
+          object-fit: contain;
+        }
 
-        </div>
+        .logo-text {
+          font-size: 22px;
+          font-weight: bold;
+          color: #f5c518;
+        }
 
-        {/* Styles */}
-        <style jsx="true">{`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+        }
+
+        .nav-links a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 15px;
+        }
+
+        .nav-links a:hover {
+          color: #f5c518;
+        }
+
+        .rent-btn {
+          background: #f5c518;
+          color: #000;
+          padding: 10px 18px;
+          border-radius: 6px;
+          font-weight: bold;
+        }
+
+        .hamburger {
+          display: none;
+          font-size: 26px;
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          .logo-img {
+            height: 48px;
           }
 
-          .navbar {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e0dede;
-            transition: all 0.3s ease;
-            z-index: 1000;
+          .logo-text {
+            font-size: 18px;
           }
 
-          .navbar.shrink .logo img {
-            width: 90px;
-            height: 45px;
-          }
-
-          .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            position: relative;
-          }
-
-          .logo img {
-            width: 120px;
-            height: 60px;
-            border-radius: 40px;
-            transition: all 0.3s ease;
+          .hamburger {
+            display: block;
           }
 
           .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-          }
-
-          .nav-links li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
-          }
-
-          .nav-links li a:hover {
-            background: #f5c518;
-            color: #000;
-          }
-
-          .mobile-menu-icon {
+            position: absolute;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: #0f0f0f;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            gap: 18px;
             display: none;
-            cursor: pointer;
           }
 
-          @media (max-width: 768px) {
-            .mobile-menu-icon {
-              display: block;
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              z-index: 1100;
-              background: white;
-              border-radius: 8px;
-              padding: 4px;
-              box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            }
-
-            .nav-links {
-              flex-direction: column;
-              overflow: hidden;
-              max-height: 0;
-              transition: max-height 0.4s ease;
-              background: rgba(255, 255, 255, 0.95);
-              backdrop-filter: blur(12px);
-              width: 100%;
-              position: absolute;
-              top: 70px;
-              left: 0;
-              gap: 12px;
-            }
-
-            .nav-links.open {
-              max-height: 500px;
-            }
-
-            .nav-links li a {
-              text-align: center;
-              padding: 15px 0;
-              display: block;
-            }
+          .nav-links.open {
+            display: flex;
           }
-        `}</style>
+        }
+      `}</style>
+
+      <nav className="navbar">
+        <div className="logo-container">
+          <img src="/companylogo.jpeg" alt="Logo" className="logo-img" />
+        </div>
+
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <Link to="/" onClick={handleLinkClick}>Home</Link>
+          <Link to="/services" onClick={handleLinkClick}>Services</Link>
+          <Link to="/blog" onClick={handleLinkClick}>Blog</Link>
+          <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
+          <Link to="/rent" className="rent-btn" onClick={handleLinkClick}>Rent Now</Link>
+        </div>
+
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </div>
       </nav>
     </>
   );
