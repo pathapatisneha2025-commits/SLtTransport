@@ -1,57 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const services = [
-  {
-    title: "Transport Services",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80",
-    desc: "Reliable transport solutions for industrial, construction, and commercial needs.",
-    points: [
-      "Safe and timely delivery",
-      "Heavy machinery & cargo movement",
-      "Long-distance and regional logistics",
-      "GPS-enabled tracking",
-      "Experienced drivers and crew",
-    ],
-  },
-  {
-    title: "Heavy Equipment Rental",
-    image: "https://images.unsplash.com/photo-1581091215367-59ab6c6b9b19?auto=format&fit=crop&w=800&q=80",
-    desc: "High-quality and well-maintained heavy machinery available for short and long-term projects.",
-    points: [
-      "JCBs, excavators, loaders & cranes",
-      "Well-maintained modern machinery",
-      "Flexible rental plans",
-      "On-site delivery & support",
-      "Certified operators available",
-    ],
-  },
-  {
-    title: "Manpower Supply",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
-    desc: "Skilled and semi-skilled workforce to support your construction and industrial operations.",
-    points: [
-      "Skilled & semi-skilled labor",
-      "Construction & industrial manpower",
-      "Safety-trained professionals",
-      "Short-term & long-term deployment",
-      "Reliable workforce management",
-    ],
-  },
-  {
-    title: "Logistics Solutions",
-    image: "https://images.unsplash.com/photo-1586521995568-39abaa0c2311?auto=format&fit=crop&w=800&q=80",
-    desc: "End-to-end logistics solutions ensuring smooth coordination and efficient operations.",
-    points: [
-      "Smart logistics planning",
-      "Material handling & warehousing",
-      "Real-time coordination",
-      "Cost-effective solutions",
-      "Industry-compliant processes",
-    ],
-  },
-];
+const API = "https://slttranportdatabse.onrender.com/api/services/all";
 
 const ServicesPage = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((data) => setServices(data))
+      .catch((err) => console.error("Service fetch error:", err));
+  }, []);
+
   return (
     <>
       <style>
@@ -177,14 +137,17 @@ const ServicesPage = () => {
           }
 
           @media (max-width: 992px) {
-            .service-block, .service-block.reverse {
+            .service-block,
+            .service-block.reverse {
               flex-direction: column;
               text-align: center;
               gap: 40px;
             }
+
             .service-points li {
               justify-content: center;
             }
+
             .service-image img {
               height: 300px;
             }
@@ -195,21 +158,24 @@ const ServicesPage = () => {
       <section className="services-page">
         <div className="services-header">
           <h1>Industrial Solutions</h1>
-          <p>We provide end-to-end support for infrastructure and logistics with a focus on safety and efficiency.</p>
+          <p>
+            We provide end-to-end support for infrastructure and logistics with a
+            focus on safety and efficiency.
+          </p>
         </div>
 
         {services.map((service, index) => (
           <div
-            key={index}
+            key={service.id}
             className={`service-block ${index % 2 !== 0 ? "reverse" : ""}`}
           >
             <div className="service-image">
-              <img src={service.image} alt={service.title} />
+              <img src={service.image_url} alt={service.title} />
             </div>
 
             <div className="service-content">
               <h2>{service.title}</h2>
-              <p>{service.desc}</p>
+              <p>{service.description}</p>
 
               <ul className="service-points">
                 {service.points.map((point, i) => (

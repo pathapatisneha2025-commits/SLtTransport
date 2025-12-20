@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+const API = "https://slttranportdatabse.onrender.com/api/banners/all";
 
 const Banner = () => {
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((data) => {
+        // show only active banners
+        const activeBanners = data.filter(b => b.is_active);
+        setBanners(activeBanners.slice(0, 5)); // max 5 images
+      })
+      .catch((err) => console.error("Banner fetch error:", err));
+  }, []);
+
   return (
     <>
       <style>
@@ -61,7 +76,6 @@ const Banner = () => {
             opacity: 0.9;
           }
 
-          /* Fan-style Banner Gallery */
           .banner-gallery {
             display: flex;
             justify-content: center;
@@ -81,10 +95,9 @@ const Banner = () => {
             background: #222;
           }
 
-          /* Individual Rotation for the "Fan" effect */
           .card-1 { transform: rotate(-10deg) translateY(30px); }
           .card-2 { transform: rotate(-5deg) translateY(10px); }
-          .card-3 { transform: rotate(0deg) translateY(0px); }
+          .card-3 { transform: rotate(0deg); }
           .card-4 { transform: rotate(5deg) translateY(10px); }
           .card-5 { transform: rotate(10deg) translateY(30px); }
 
@@ -106,7 +119,7 @@ const Banner = () => {
         <video className="banner-video" autoPlay loop muted playsInline>
           <source src="/banner.mp4" type="video/mp4" />
         </video>
-        
+
         <div className="banner-overlay"></div>
 
         <div className="banner-content">
@@ -116,11 +129,14 @@ const Banner = () => {
           </div>
 
           <div className="banner-gallery">
-            <img src="/images/truck1.jpg" className="gallery-card card-1" alt="Truck" />
-            <img src="/images/jcb1.jpg" className="gallery-card card-2" alt="JCB" />
-            <img src="/images/jcb2.jpg" className="gallery-card card-3" alt="Loader" />
-            <img src="/images/jcb3.jpg" className="gallery-card card-4" alt="Excavator" />
-            <img src="/images/truck2.jpg" className="gallery-card card-5" alt="Truck" />
+            {banners.map((banner, index) => (
+              <img
+                key={banner.id}
+                src={banner.image_url}
+                alt="Banner"
+                className={`gallery-card card-${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
