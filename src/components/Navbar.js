@@ -39,11 +39,10 @@ export default function Navbar() {
           align-items: center;
           gap: 10px;
           cursor: pointer;
-          height: 100%;
         }
 
         .logo-img {
-          height: 100%;
+          height: 50px;
           width: auto;
           object-fit: contain;
         }
@@ -54,29 +53,17 @@ export default function Navbar() {
           color: #f5c518;
         }
 
-       .nav-links {
-  position: fixed;        /* fixed instead of absolute */
-  top: 0;                 /* start from top */
-  left: 0;
-  width: 100%;
-  height: 100vh;          /* full viewport height */
-  background: #0f0f0f;
-  flex-direction: column;
-  align-items: center;    /* center items */
-  justify-content: center;/* center vertically */
-  gap: 18px;
-  overflow-y: auto;
-  max-height: none;       /* remove max-height */
-  transform: translateX(${mobileOpen ? '0' : '-100%'});
-  transition: transform 0.3s ease;
-  z-index: 2000;
-}
-
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+        }
 
         .nav-links a {
           color: #fff;
           text-decoration: none;
-          font-size: 15px;
+          font-size: 16px;
+          transition: color 0.2s;
         }
 
         .nav-links a:hover {
@@ -93,47 +80,39 @@ export default function Navbar() {
 
         .mobile-menu-icon {
           display: none;
-          font-size: 26px;
+          font-size: 28px;
           cursor: pointer;
           color: #fff;
         }
 
         @media (max-width: 768px) {
-          .logo-img {
-            height: 48px;
-          }
-
-          .logo-text {
-            font-size: 18px;
-          }
-
           .mobile-menu-icon {
             display: block;
           }
 
           .nav-links {
-            position: absolute;
+            position: fixed;
             top: 64px;
             left: 0;
             width: 100%;
+            height: calc(100vh - 64px);
             background: #0f0f0f;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 20px;
-            gap: 18px;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.4s ease;
-          }
-
-          .nav-links.open {
-            max-height: 500px; /* adjust as needed */
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateX(${mobileOpen ? "0" : "-100%"});
+            transition: transform 0.3s ease-in-out;
+            z-index: 2000;
           }
 
           .nav-links a {
-            width: 100%;
-            display: block;
-            padding: 12px 0;
+            font-size: 20px;
+          }
+
+          .rent-btn {
+            font-size: 18px;
+            padding: 12px 24px;
           }
         }
       `}</style>
@@ -145,19 +124,26 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
         <div
           className="mobile-menu-icon"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+          {mobileOpen ? <FiX /> : <FiMenu />}
         </div>
 
-        <div className={`nav-links ${mobileOpen ? "open" : ""}`}>
-          <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
-          <Link to="/services" onClick={() => setMobileOpen(false)}>Services</Link>
-          <Link to="/blog" onClick={() => setMobileOpen(false)}>Blog</Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+        <div className="nav-links">
+          <Link to="/" onClick={() => setMobileOpen(false)}>
+            Home
+          </Link>
+          <Link to="/services" onClick={() => setMobileOpen(false)}>
+            Services
+          </Link>
+          <Link to="/blog" onClick={() => setMobileOpen(false)}>
+            Blog
+          </Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)}>
+            Contact
+          </Link>
           <Link
             to="/rent"
             className="rent-btn"
