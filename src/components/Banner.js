@@ -9,8 +9,7 @@ const Banner = () => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => {
-        // show only active banners
-        const activeBanners = data.filter(b => b.is_active);
+        const activeBanners = data.filter((b) => b.is_active);
         setBanners(activeBanners.slice(0, 5)); // max 5 images
       })
       .catch((err) => console.error("Banner fetch error:", err));
@@ -61,17 +60,23 @@ const Banner = () => {
             padding: 0 5%;
           }
 
+          .banner-text {
+            max-width: 900px;
+            margin: 0 auto;
+          }
+
           .banner-text h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #fff;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            margin-bottom: 20px;
           }
 
           .banner-text p {
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 40px;
             opacity: 0.9;
           }
@@ -83,6 +88,7 @@ const Banner = () => {
             gap: 15px;
             margin-top: 50px;
             perspective: 1000px;
+            flex-wrap: wrap;
           }
 
           .gallery-card {
@@ -91,7 +97,7 @@ const Banner = () => {
             object-fit: cover;
             border-radius: 20px;
             border: 4px solid #fff;
-            transition: transform 0.3s ease, z-index 0.3s;
+            transition: transform 0.3s ease, z-index 0.3s, border-color 0.3s;
             background: #222;
           }
 
@@ -108,9 +114,15 @@ const Banner = () => {
           }
 
           @media (max-width: 992px) {
-            .banner-text h1 { font-size: 2.2rem; }
+            .banner-text h1 { font-size: 2rem; }
+            .banner-text p { font-size: 1rem; }
             .gallery-card { width: 120px; height: 180px; }
-            .banner-gallery { gap: 8px; flex-wrap: wrap; }
+            .banner-gallery { gap: 8px; }
+          }
+
+          @media (max-width: 576px) {
+            .banner-text h1 { font-size: 1.5rem; }
+            .banner-text p { font-size: 0.9rem; }
           }
         `}
       </style>
@@ -124,8 +136,8 @@ const Banner = () => {
 
         <div className="banner-content">
           <div className="banner-text">
-            <h1>SWIFT LIGER TRANSPORT AND GENERAL CONTRACTING SOLUTIONS FOR MODERN BUSINESSES</h1>
-            <p>Fast, reliable and powerful transport solutions for every industry</p>
+            <h1>Swift Liger Transport & General Contracting Solutions</h1>
+            <p>Fast, reliable, and powerful transport solutions for every industry.</p>
           </div>
 
           <div className="banner-gallery">
@@ -133,7 +145,7 @@ const Banner = () => {
               <img
                 key={banner.id}
                 src={banner.image_url}
-                alt="Banner"
+                alt={`Banner ${index + 1}`}
                 className={`gallery-card card-${index + 1}`}
               />
             ))}
