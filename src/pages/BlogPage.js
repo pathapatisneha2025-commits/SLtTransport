@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
@@ -86,7 +87,7 @@ const BlogPage = () => {
                   <div className="post-date">{post.date}</div>
                   <h3 className="post-title">{post.title}</h3>
                   <p style={{color: '#666', fontSize: '0.95rem'}}>{post.excerpt}</p>
-                  <a href={`/${post.slug}`} className="read-more">Read More</a>
+<Link to={`/blog/${post.id}`} className="read-more">Read More</Link>
                 </div>
               </article>
             ))}

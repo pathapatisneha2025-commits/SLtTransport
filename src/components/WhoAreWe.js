@@ -112,10 +112,7 @@ export default function WhoWeAre() {
           Swift Liger Transport and General Contracting is a leading provider of logistics, transport, heavy equipment rentals, and industrial support services. Committed to reliability, safety, and world-class standards, we deliver powerful solutions that drive industries forward.
           </p>
           <p>
-            From JCB machinery and heavy vehicles to manpower supply and
-            specialized logistics, SLT is built on excellence, precision, and
-            trust. Our mission is simple — fast delivery, smarter movement, and
-            real results for our clients.
+          From all types of heavy machinery to light and heavy vehicles, manpower supply, and specialized logistics, Swift Liger Transport and General Contracting is built on excellence, precision, and trust. Our mission is simple—delivering fast, smarter movement, and real results for our clients
           </p>
 
           <button className="who-btn">Learn More</button>

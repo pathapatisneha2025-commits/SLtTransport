@@ -85,11 +85,11 @@ export default function EquipmentCategories() {
   const categories = [
     {
       title: "Cranes",
-      img: "https://images.unsplash.com/photo-1545465005-95193f7734f1?w=500&auto=format",
+      img: "/cranes.jpeg",
     },
     {
       title: "Earthmoving Equipment",
-      img: "https://images.unsplash.com/photo-1579407141842-12e03223018e?w=500&auto=format",
+      img: "/earthmoving.jpg",
       active: true,
     },
     {

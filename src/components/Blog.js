@@ -1,163 +1,101 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
-export default function LatestBlogPosts() {
+const BlogPage = () => {
+  const [posts, setPosts] = useState([]);
+
   useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      .blog-section {
-        padding: 90px 6%;
-        background: #ffffff;
-        text-align: center;
-      }
-
-      .blog-title {
-        font-size: 2.6rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 10px;
-      }
-
-      .blog-subtitle {
-        font-size: 1.1rem;
-        color: #64748b;
-        max-width: 750px;
-        margin: 0 auto 60px;
-      }
-
-      .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 35px;
-        max-width: 1350px;
-        margin: auto;
-      }
-
-      .blog-card {
-        background: #ffffff;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 18px 45px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-align: left;
-      }
-
-      .blog-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 28px 65px rgba(0,0,0,0.12);
-      }
-
-      .blog-image img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-      }
-
-      .blog-content {
-        padding: 28px 26px 32px;
-      }
-
-      .blog-content h3 {
-        font-size: 1.35rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-        color: #0f172a;
-      }
-
-      .blog-content h3.active {
-        color: #38bdf8;
-      }
-
-      .blog-content p {
-        font-size: 1rem;
-        color: #64748b;
-        line-height: 1.6;
-        margin-bottom: 18px;
-      }
-
-      .read-more {
-        font-size: 1rem;
-        color: #38bdf8;
-        font-weight: 500;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .read-more:hover {
-        text-decoration: underline;
-      }
-
-      /* Responsive */
-      @media (max-width: 1100px) {
-        .blog-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 650px) {
-        .blog-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .blog-title {
-          font-size: 2.1rem;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    fetchBlogs();
   }, []);
 
-  const blogs = [
-    {
-      title: "How JCB Machines Improve Construction Efficiency",
-      desc:
-        "Learn how modern JCB equipment accelerates workflow and reduces operational costs.",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-      link: "/blog/jcb-machines",
-    },
-    {
-      title: "Top 5 Transport Tips for Heavy Machinery",
-      desc:
-        "Essential safety and logistics strategies for transporting heavy machinery effectively.",
-      img: "https://images.unsplash.com/photo-1599687268904-d1a8c1c6d1fa",
-      link: "/blog/transport-tips",
-      active: true,
-    },
-    {
-      title: "Why Skilled Manpower Matters in Modern Projects",
-      desc:
-        "Understand the value of trained professionals in delivering high-quality results.",
-      img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc",
-      link: "/blog/skilled-manpower",
-    },
-  ];
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("https://slttranportdatabse.onrender.com/api/blogs/all");
+      const data = await res.json();
+      const mapped = data.map(blog => ({
+        id: blog.id,
+        title: blog.title,
+        category: blog.slug,
+        date: new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+        excerpt: blog.description,
+        image: blog.image_url,
+        slug: blog.slug
+      }));
+      setPosts(mapped);
+    } catch (err) {
+      console.error("Failed to fetch blogs:", err);
+    }
+  };
 
   return (
-    <section className="blog-section">
-      <h2 className="blog-title">Latest Blog Posts</h2>
-      <p className="blog-subtitle">
-        Insights and updates from logistics, transport, and heavy equipment industries.
-      </p>
+    <>
+      <style>
+        {`
+          .blog-page { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; padding-bottom: 80px; }
+          .blog-hero { background: #002147; color: white; padding: 80px 10%; text-align: center; }
+          .blog-hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
+          .blog-hero p { opacity: 0.8; font-size: 1.1rem; }
+          .blog-container { max-width: 1200px; margin: -40px auto 0; padding: 0 20px; }
+          .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+          .post-card { background: white; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+          .post-card:hover { transform: translateY(-5px); }
+          .post-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+          .post-body { padding: 20px; }
+          .post-date { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+          .post-title { font-size: 1.25rem; color: #002147; margin-bottom: 12px; line-height: 1.3; }
+          .read-more { color: #00a8ff; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; }
+          .read-more:hover { text-decoration: underline; }
+          .category-badge { background: #00a8ff; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 8px; }
+          
+          /* Mobile responsiveness */
+          @media (max-width: 800px) {
+            .blog-hero { padding: 60px 5%; }
+            .blog-hero h1 { font-size: 2rem; }
+            .blog-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+            .post-body { padding: 15px; }
+            .post-title { font-size: 1.1rem; }
+            .post-date { font-size: 0.75rem; }
+            .read-more { font-size: 0.85rem; }
+          }
 
-      <div className="blog-grid">
-        {blogs.map((blog, index) => (
-          <div key={index} className="blog-card">
-            <div className="blog-image">
-              <img src={blog.img} alt={blog.title} />
-            </div>
+          @media (max-width: 480px) {
+            .blog-hero { padding: 40px 5%; }
+            .blog-hero h1 { font-size: 1.6rem; }
+            .blog-grid { grid-template-columns: 1fr; gap: 15px; }
+            .post-body { padding: 12px; }
+            .post-title { font-size: 1rem; }
+            .post-date { font-size: 0.7rem; }
+            .read-more { font-size: 0.8rem; }
+            .category-badge { font-size: 0.7rem; padding: 3px 8px; }
+          }
+        `}
+      </style>
 
-            <div className="blog-content">
-              <h3 className={blog.active ? "active" : ""}>{blog.title}</h3>
-              <p>{blog.desc}</p>
-              <a href={blog.link} className="read-more">
-                Read More →
-              </a>
-            </div>
+      <div className="blog-page">
+        <section className="blog-hero">
+          <h1>Insights & Updates</h1>
+          <p>Stay updated with the latest trends in transport and logistics.</p>
+        </section>
+
+        <div className="blog-container">
+          <div className="blog-grid">
+            {posts.map(post => (
+              <article key={post.id} className="post-card">
+                <img src={post.image} alt={post.title} className="post-img" />
+                <div className="post-body">
+                  <span className="category-badge">{post.category}</span>
+                  <div className="post-date">{post.date}</div>
+                  <h3 className="post-title">{post.title}</h3>
+                  <p style={{color: '#666', fontSize: '0.95rem'}}>{post.excerpt}</p>
+<Link to={`/blog/${post.id}`} className="read-more">Read More</Link>
+                </div>
+              </article>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </section>
+    </>
   );
-}
+};
+
+export default BlogPage;

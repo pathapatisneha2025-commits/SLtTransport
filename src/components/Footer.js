@@ -119,7 +119,7 @@ const Footer = () => {
           <div className="footer-section footer-logo-section">
             <img src="/companylogo.jpeg" alt="SLT Logo" />
             <p>
-              <strong>SLT (Swift Liger Transport)</strong> delivers reliable
+              <strong> Swift Liger Transport And General Contracting</strong> delivers reliable
               logistics, heavy equipment rentals, manpower supply, and
               industrial solutions with quality and commitment.
             </p>

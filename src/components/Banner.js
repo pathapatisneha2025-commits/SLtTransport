@@ -124,7 +124,7 @@ const Banner = () => {
 
         <div className="banner-content">
           <div className="banner-text">
-            <h1>Swift Logistics for Modern Businesses</h1>
+            <h1>SWIFT LIGER TRANSPORT AND GENERAL CONTRACTING SOLUTIONS FOR MODERN BUSINESSES</h1>
             <p>Fast, reliable and powerful transport solutions for every industry</p>
           </div>
 

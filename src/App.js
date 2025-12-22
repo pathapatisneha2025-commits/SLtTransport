@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import BlogPage from "./pages/BlogPage";
 import ServicesPage from "./pages/Servicespage";
 import ContactPage from "./pages/ContactPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 // import HeroSection from "./components/HeroSection";
 // import ServicesSection from "./components/ServiceSection";
 // import CTASection from "./components/CtaSection";
@@ -51,6 +52,8 @@ export default function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/services" element={<ServicesPage/>} />
         <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog/:id" element={<BlogDetailPage />} />
+
       </Routes>
 
       {/* COMMON FOOTER */}
