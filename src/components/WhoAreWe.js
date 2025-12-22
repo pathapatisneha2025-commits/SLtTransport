@@ -109,10 +109,7 @@ export default function WhoWeAre() {
         <div className="who-card">
           <h2>Who We Are</h2>
           <p>
-            SLT (Swift Liger Transport) is a leading provider of logistics,
-            transport, heavy equipment rentals, and industrial support services.
-            With a commitment to reliability, safety, and world-class standards,
-            we deliver powerful solutions that move industries forward.
+          Swift Liger Transport and General Contracting is a leading provider of logistics, transport, heavy equipment rentals, and industrial support services. Committed to reliability, safety, and world-class standards, we deliver powerful solutions that drive industries forward.
           </p>
           <p>
             From JCB machinery and heavy vehicles to manpower supply and
