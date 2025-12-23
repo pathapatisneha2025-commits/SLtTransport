@@ -15,20 +15,21 @@ const Footer = () => {
 
         .footer-content {
           display: grid;
-          grid-template-columns: 1.6fr 1fr 1fr 1.6fr;
+          grid-template-columns: 2fr 1fr 1.5fr;
           gap: 40px;
           margin-bottom: 35px;
         }
 
         .footer-section h3 {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           margin-bottom: 18px;
           color: #0f172a;
+          font-weight: 600;
         }
 
         /* Brand */
         .footer-logo-section img {
-          max-width: 140px;
+          max-width: 150px;
           margin-bottom: 12px;
         }
 
@@ -46,14 +47,14 @@ const Footer = () => {
         }
 
         .footer-links li {
-          margin-bottom: 10px;
+          margin-bottom: 12px;
         }
 
         .footer-links a {
           text-decoration: none;
           color: #475569;
           font-size: 0.95rem;
-          transition: color 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
@@ -71,14 +72,39 @@ const Footer = () => {
         }
 
         .contact-icon {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           color: #2563eb;
+        }
+
+        /* Social Icons */
+        .social-icons {
+          display: flex;
+          gap: 15px;
+          margin-top: 15px;
+        }
+
+        .social-icons a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 36px;
+          height: 36px;
+          background-color: #e2e8f0;
+          border-radius: 50%;
+          color: #2563eb;
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+          background-color: #2563eb;
+          color: #fff;
         }
 
         /* Footer Bottom */
         .footer-bottom {
           text-align: center;
-          padding-top: 18px;
+          padding-top: 20px;
           border-top: 1px solid #e5e7eb;
           font-size: 0.85rem;
           color: #64748b;
@@ -119,10 +145,11 @@ const Footer = () => {
           <div className="footer-section footer-logo-section">
             <img src="/companylogo.jpeg" alt="SLT Logo" />
             <p>
-              <strong> Swift Liger Transport And General Contracting</strong> delivers reliable
+              <strong>Swift Liger Transport And General Contracting</strong> delivers reliable
               logistics, heavy equipment rentals, manpower supply, and
               industrial solutions with quality and commitment.
             </p>
+           
           </div>
 
           {/* Quick Links */}
@@ -132,20 +159,8 @@ const Footer = () => {
               <li><a href="/">Home</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/blog">Blog</a></li>
-                            <li><a href="/oilandgas">OilandGas</a></li>
-
+              <li><a href="/oilandgas">OilandGas</a></li>
               <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="footer-section footer-links">
-            <h3>Our Services</h3>
-            <ul>
-              <li><a href="/services/transport">Transport Services</a></li>
-              <li><a href="/services/heavy-equipment">Heavy Equipment Rental</a></li>
-              <li><a href="/services/manpower">Manpower Supply</a></li>
-              <li><a href="/services/logistics">Logistics Solutions</a></li>
             </ul>
           </div>
 
@@ -162,16 +177,13 @@ const Footer = () => {
             </div>
             <div className="contact-item">
               <span className="contact-icon">📍</span>
-              <span>
-                Industrial Area, Anantapur, Andhra Pradesh, India
-              </span>
+              <span>Industrial Area, Anantapur, Andhra Pradesh, India</span>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          © {new Date().getFullYear()} <strong>SLT Swift Liger Transport</strong>.
-          All Rights Reserved.
+          © {new Date().getFullYear()} <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
         </div>
       </footer>
     </>
