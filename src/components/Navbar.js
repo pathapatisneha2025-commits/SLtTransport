@@ -123,6 +123,8 @@ export default function Navbar() {
           <Link to="/" onClick={handleLinkClick}>Home</Link>
           <Link to="/services" onClick={handleLinkClick}>Services</Link>
           <Link to="/blog" onClick={handleLinkClick}>Blog</Link>
+           <Link to="/oilandgas" onClick={handleLinkClick}>Oil&Gas</Link>
+
           <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
           <Link to="/rent" className="rent-btn" onClick={handleLinkClick}>Rent Now</Link>
         </div>
