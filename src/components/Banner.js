@@ -8,10 +8,14 @@ const Banner = () => {
   useEffect(() => {
     fetch(API)
       .then((res) => res.json())
-      .then((data) => {
-        const activeBanners = data.filter((b) => b.is_active);
-        setBanners(activeBanners.slice(0, 5));
-      })
+     .then((data) => {
+  const activeBanners = data
+    .filter((b) => b.is_active)
+    .sort((a, b) => a.id - b.id); // ✅ sort by ID ASC
+
+  setBanners(activeBanners.slice(0, 7));
+})
+
       .catch((err) => console.error("Banner fetch error:", err));
   }, []);
 
@@ -168,7 +172,7 @@ const Banner = () => {
           <div className="banner-text">
             <h1>
               Swift Liger Transport <br />
-              & General Contracting Solutions
+              & General Contracting 
             </h1>
             <p>
               Fast, reliable, and powerful transport solutions for every

@@ -6,76 +6,106 @@ export default function EquipmentCategories() {
     style.innerHTML = `
       .equipment-section {
         padding: 90px 6%;
-        background: #f8fafc;
+        background: linear-gradient(180deg, #f8fafc, #eef2f7);
         text-align: center;
       }
 
       .equipment-section h2 {
         font-size: 2.6rem;
-        font-weight: 700;
+        font-weight: 800;
         color: #0f172a;
       }
 
       .equipment-section p {
-        margin-top: 10px;
+        margin-top: 12px;
         color: #64748b;
         font-size: 1.1rem;
       }
 
+      /* ✅ Perfect layout for 2 cards */
       .equipment-grid {
         margin-top: 60px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-        max-width: 1300px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, minmax(280px, 420px));
+        justify-content: center;
+        gap: 40px;
       }
 
+      /* 🔥 Premium card */
       .equipment-card {
         background: #ffffff;
-        border-radius: 18px;
-        padding: 30px 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
+        border-radius: 22px;
+        padding: 30px 25px 35px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        transition: all 0.35s ease;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
         border: 2px solid transparent;
       }
 
+      /* ✨ Glow effect */
+      .equipment-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(247, 183, 49, 0.25),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .equipment-card:hover::before {
+        opacity: 1;
+      }
+
       .equipment-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 30px 70px rgba(0,0,0,0.15);
         border-color: #f7b731;
       }
 
       .equipment-card img {
         width: 100%;
-        height: 200px;
+        height: 240px;
         object-fit: contain;
-        margin-bottom: 20px;
+        margin-bottom: 22px;
+        transition: transform 0.35s ease;
+      }
+
+      .equipment-card:hover img {
+        transform: scale(1.08);
       }
 
       .equipment-card h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
+        font-size: 1.35rem;
+        font-weight: 700;
         color: #0f172a;
+        margin-top: 10px;
       }
 
-      /* Updated active state to match SLT branding */
-      .equipment-card.active h4 {
-        color: #f7b731;
-      }
-      
+      /* ⭐ Active state */
       .equipment-card.active {
         border-color: #f7b731;
       }
 
-      @media (max-width: 1100px) {
-        .equipment-grid { grid-template-columns: repeat(2, 1fr); }
+      .equipment-card.active h4 {
+        color: #f7b731;
       }
 
-      @media (max-width: 600px) {
-        .equipment-grid { grid-template-columns: 1fr; }
-        .equipment-section h2 { font-size: 2rem; }
+      /* 📱 Mobile responsive */
+      @media (max-width: 900px) {
+        .equipment-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .equipment-section h2 {
+          font-size: 2.1rem;
+        }
       }
     `;
     document.head.appendChild(style);
@@ -91,14 +121,6 @@ export default function EquipmentCategories() {
       title: "Earthmoving Equipment",
       img: "/earthmoving.jpg",
       active: true,
-    },
-    {
-      title: "Material Handling",
-      img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&auto=format",
-    },
-    {
-      title: "Portable Cabins",
-      img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&auto=format",
     },
   ];
 

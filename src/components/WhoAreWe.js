@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function WhoWeAre() {
   useEffect(() => {
@@ -115,7 +116,9 @@ export default function WhoWeAre() {
           From all types of heavy machinery to light and heavy vehicles, manpower supply, and specialized logistics, Swift Liger Transport and General Contracting is built on excellence, precision, and trust. Our mission is simple—delivering fast, smarter movement, and real results for our clients
           </p>
 
-          <button className="who-btn">Learn More</button>
+<Link to="/whowearedetailed">
+  <button className="who-btn">Learn More</button>
+</Link>
         </div>
 
         {/* RIGHT IMAGE */}
