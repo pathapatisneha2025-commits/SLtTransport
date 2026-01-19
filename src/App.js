@@ -17,6 +17,7 @@ import ContactPage from "./pages/ContactPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
 import OilAndGasPage from "./pages/OilAndGas";
 import WhoWeAreDetailed from "./pages/WhoWeareDetailed";
+import CategoryDetail from "./pages/CategoryDetailed";
 // import HeroSection from "./components/HeroSection";
 // import ServicesSection from "./components/ServiceSection";
 // import CTASection from "./components/CtaSection";
@@ -57,6 +58,8 @@ export default function App() {
                 <Route path="/oilandgas" element={<OilAndGasPage />} />
 
           <Route path="/blog/:id" element={<BlogDetailPage />} />
+                  <Route path="/category/:slug" element={<CategoryDetail />} />
+
           <Route path="/whowearedetailed" element={<WhoWeAreDetailed />} />
 
       </Routes>
