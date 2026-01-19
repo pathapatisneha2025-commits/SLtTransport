@@ -118,37 +118,73 @@ export default function EquipmentCategories() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
+const categories = [
+  {
+    title: "Earth Moving Heavy & Light Vehicles",
+    slug: "moving-vehicles",
+    image: "/hiabtruck.jpg",
+    description: `
+We specialize in transporting a wide range of vehicles, from compact cars
+to heavy trucks and buses. Our team ensures that each vehicle is securely
+loaded, transported, and delivered safely to its destination.
 
-  const categories = [
-    {
-      title: "Earth Moving Heavy & Light Vehicles",
-      slug: "moving-vehicles",
-      image: "/hiabtruck.jpg",
-      description: `We specialize in transporting a wide range of vehicles...`,
-      gallery: [
-        "/cranes.jpeg",
-        "/flattier.png",
-        "/hiabtruck.jpg",
-        "/luxurybus.jpg",
-        "/pickup.jpg",
-        "/tanker.jpg",
-      ],
-    },
-    {
-      title: "Earth Moving Equipment",
-      slug: "moving-equipment",
-      image: "/GRADER.png",
-      description: `We provide comprehensive solutions for moving industrial...`,
-      gallery: [
-        "/Excavator-1.jpg",
-        "/FORKLIFT.jpg",
-        "/JCB.jpg",
-        "/GRADER.png",
-        "/sitepic.jpg",
-        "/machinary.jpg",
-      ],
-    },
-  ];
+Whether it’s a commercial fleet, construction vehicles, or personal luxury
+vehicles, we provide efficient and reliable vehicle moving services.
+
+Key Services Include:
+- Safe transportation for cars, buses, trucks, and pickups
+- Specialized equipment for heavy vehicles
+- Insurance coverage for all transported vehicles
+- Timely delivery with tracking updates
+
+Benefits:
+- Reduced risk of damage
+- Professional handling by trained personnel
+- Customized transport solutions for every vehicle type
+    `,
+    gallery: [
+      "/cranes.jpeg",
+      "/flattier.png",
+      "/hiabtruck.jpg",
+      "/luxurybus.jpg",
+      "/pickup.jpg",
+      "/tanker.jpg",
+    ],
+  },
+  {
+    title: "Earth Moving Equipment",
+    slug: "moving-equipment",
+    image: "/GRADER.png",
+    description: `
+We provide comprehensive solutions for moving industrial and construction
+equipment. Our fleet includes forklifts, pallet jacks, cranes, and other
+machinery to ensure smooth operations and safe handling.
+
+From site relocation to warehouse transfers, we manage the movement of heavy
+machinery efficiently and securely.
+
+Key Services Include:
+- Transportation of construction machinery and industrial equipment
+- Forklift and pallet jack operations for internal movement
+- Safe loading and unloading procedures
+- Equipment tracking and scheduling
+
+Benefits:
+- Minimizes downtime during equipment transfers
+- Reduces risk of damage to machinery
+- Experienced operators handle all equipment safely
+    `,
+    gallery: [
+      "/Excavator-1.jpg",
+      "/FORKLIFT.jpg",
+      "/JCB.jpg",
+      "/GRADER.png",
+      "/sitepic.jpg",
+      "/machinary.jpg",
+    ],
+  },
+];
+
 
   return (
     <section className="equipment-section">

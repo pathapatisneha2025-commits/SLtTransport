@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaWhatsapp, FaTimes, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 export default function WhatsAppSupport() {
   const [open, setOpen] = useState(false);
@@ -15,9 +16,9 @@ export default function WhatsAppSupport() {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating WhatsApp Button */}
       <div style={fabStyle} onClick={() => setOpen(true)}>
-        💬
+        <FaWhatsapp size={30} />
       </div>
 
       {/* Support Panel */}
@@ -26,37 +27,49 @@ export default function WhatsAppSupport() {
           {/* Header */}
           <div style={headerStyle}>
             <span>How can we help?</span>
-            <button style={closeBtn} onClick={() => setOpen(false)}>✕</button>
+            <button style={closeBtn} onClick={() => setOpen(false)}>
+              <FaTimes />
+            </button>
           </div>
 
           {/* Body */}
           <div style={bodyStyle}>
-            <div style={cardStyle} onClick={() => openWhatsApp(whatsappNumbers[0])}>
-              📱 <div>
+            {/* Main WhatsApp Card */}
+            <div
+              style={cardStyle}
+              onClick={() => openWhatsApp(whatsappNumbers[0])}
+            >
+              <FaWhatsapp size={24} color="#25D366" />
+              <div>
                 <strong>Chat with us</strong>
                 <p>Instant WhatsApp support</p>
               </div>
             </div>
 
+            {/* Number List */}
             {whatsappNumbers.map((num) => (
               <div
                 key={num}
                 style={numberCard}
                 onClick={() => openWhatsApp(num)}
               >
-                {num}
+                <FaWhatsapp /> {num}
               </div>
             ))}
 
+            {/* Call */}
             <div style={cardStyle}>
-              ☎️ <div>
+              <FaPhoneAlt />
+              <div>
                 <strong>Talk to us</strong>
                 <p>Call customer care</p>
               </div>
             </div>
 
+            {/* Email */}
             <div style={cardStyle}>
-              ✉️ <div>
+              <FaEnvelope />
+              <div>
                 <strong>Write to us</strong>
                 <p>Email support</p>
               </div>
