@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const API = "https://slttranportdatabse.onrender.com/api/services/all";
 
@@ -185,7 +186,11 @@ const ServicesPage = () => {
                 ))}
               </ul>
 
-              <button className="quote-btn">Book This Service</button>
+<Link to="/contact">
+  <button className="quote-btn">
+    Book This Service
+  </button>
+</Link>
             </div>
           </div>
         ))}

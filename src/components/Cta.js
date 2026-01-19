@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function CtaSection() {
   useEffect(() => {
@@ -113,9 +114,11 @@ export default function CtaSection() {
         </p>
 
         <div className="cta-buttons">
-          <button className="cta-button">
-            Request a Quote
-          </button>
+         <Link to="/contact">
+  <button className="cta-button">
+    Request a Quote
+  </button>
+</Link>
 
           {/* <a
             href="https://wa.me/919999999999?text=Hello%20I%20need%20your%20services"
