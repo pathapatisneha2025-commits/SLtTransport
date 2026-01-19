@@ -34,8 +34,23 @@ const BlogPage = () => {
           .blog-page { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; padding-bottom: 80px; }
           .blog-hero { background: #002147; color: white; padding: 80px 10%; text-align: center; }
           .blog-hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
-          .blog-hero p { opacity: 0.8; font-size: 1.1rem; }
-          .blog-container { max-width: 1200px; margin: -40px auto 0; padding: 0 20px; }
+        .blog-container {
+  max-width: 1200px;
+  margin: -40px auto 0; /* keep desktop overlap */
+  padding: 0 20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .blog-container {
+    margin: 20px auto 0; /* add top margin for mobile */
+  }
+
+  .blog-hero {
+    padding-bottom: 20px; /* extra padding below hero */
+  }
+}
+
           .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
           .post-card { background: white; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
           .post-card:hover { transform: translateY(-5px); }
@@ -68,6 +83,13 @@ const BlogPage = () => {
             .read-more { font-size: 0.8rem; }
             .category-badge { font-size: 0.7rem; padding: 3px 8px; }
           }
+            @media (max-width: 800px) {
+  .blog-container {
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+}
+
         `}
       </style>
 

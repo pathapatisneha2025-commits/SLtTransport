@@ -157,11 +157,12 @@ const Footer = () => {
           <div className="footer-section footer-links">
             <h3>Quick Links</h3>
             <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/oilandgas">OilandGas</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+            <li><Link to="/">Home</Link></li>
+<li><Link to="/services">Services</Link></li>
+<li><Link to="/blog">Blog</Link></li>
+<li><Link to="/oilandgas">OilandGas</Link></li>
+<li><Link to="/contact">Contact</Link></li>
+
             </ul>
           </div>
 

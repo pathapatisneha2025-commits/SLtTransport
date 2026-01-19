@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,9 @@ const ContactPage = () => {
     console.log("Form Submitted:", formData);
     alert("Thank you! Your message has been sent.");
   };
-
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <style>
