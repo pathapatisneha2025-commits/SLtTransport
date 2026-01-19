@@ -18,6 +18,7 @@ import BlogDetailPage from "./pages/BlogDetailPage";
 import OilAndGasPage from "./pages/OilAndGas";
 import WhoWeAreDetailed from "./pages/WhoWeareDetailed";
 import CategoryDetail from "./pages/CategoryDetailed";
+import WhatsAppFloating from "./components/WhatsApp";
 // import HeroSection from "./components/HeroSection";
 // import ServicesSection from "./components/ServiceSection";
 // import CTASection from "./components/CtaSection";
@@ -65,6 +66,7 @@ export default function App() {
       </Routes>
 
       {/* COMMON FOOTER */}
+      <WhatsAppFloating></WhatsAppFloating>
     <Footer /> 
     </Router>
   );

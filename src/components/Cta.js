@@ -117,7 +117,7 @@ export default function CtaSection() {
             Request a Quote
           </button>
 
-          <a
+          {/* <a
             href="https://wa.me/919999999999?text=Hello%20I%20need%20your%20services"
             target="_blank"
             rel="noopener noreferrer"
@@ -125,7 +125,7 @@ export default function CtaSection() {
           >
             <i className="fa-brands fa-whatsapp"></i>
             Chat on WhatsApp
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

@@ -167,10 +167,17 @@ const Footer = () => {
           {/* Contact */}
           <div className="footer-section">
             <h3>Contact Us</h3>
-            <div className="contact-item">
-              <span className="contact-icon">📞</span>
-              <span>+91 98765 43210</span>
-            </div>
+           {/* Mobile Number */}
+  <div className="contact-item">
+    <span className="contact-icon">📱</span>
+    <span>Mobile: +971569569555</span>
+  </div>
+
+  {/* Landline Number */}
+  <div className="contact-item">
+    <span className="contact-icon">☎️</span>
+    <span>Landline: +97126271510</span>
+  </div>
             <div className="contact-item">
               <span className="contact-icon">✉️</span>
               <span>contact@sltservices.com</span>

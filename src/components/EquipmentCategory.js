@@ -36,19 +36,27 @@ export default function EquipmentCategories() {
       .equipment-card {
         background: #ffffff;
         border-radius: 22px;
-        padding: 40px 25px 35px;
+        padding: 25px 15px 20px;
         box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         transition: all 0.35s ease;
         cursor: pointer;
         position: relative;
         overflow: hidden;
         border: 2px solid transparent;
-        min-height: 150px;
+        min-height: 250px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
       }
+.equipment-card img {
+  width: 100%;
+  height: auto;        /* let height adjust automatically */
+  max-height: 250px;   /* optional: limits extremely tall images */
+  object-fit: contain;  /* prevents cropping */
+  border-radius: 18px;
+}
+
 
       .equipment-card::before {
         content: "";
@@ -78,7 +86,7 @@ export default function EquipmentCategories() {
         font-size: 1.35rem;
         font-weight: 700;
         color: #0f172a;
-        margin-top: 10px;
+        margin-top: 12px;
         text-align: center;
       }
 
@@ -111,66 +119,36 @@ export default function EquipmentCategories() {
     return () => document.head.removeChild(style);
   }, []);
 
-const categories = [
-  {
-    title: " Earth Moving Heavy & Light Vehicles",
-    slug: "moving-vehicles",
-    description: `
-We specialize in transporting a wide range of vehicles, from compact cars to heavy trucks and buses. 
-Our team ensures that each vehicle is securely loaded, transported, and delivered safely to its destination. 
-Whether it’s a commercial fleet, construction vehicles, or personal luxury vehicles, we provide efficient and reliable vehicle moving services. 
-
-**Key Services Include:**
-- Safe transportation for cars, buses, trucks, and pickups
-- Specialized equipment for heavy vehicles
-- Insurance coverage for all transported vehicles
-- Timely delivery with tracking updates
-
-**Benefits:**
-- Reduced risk of damage
-- Professional handling by trained personnel
-- Customized transport solutions for every vehicle type
-    `,
-    gallery: [
-      "/cranes.jpeg",
-      "/flattier.png",
-      "/hiabtruck.jpg",
-      "/luxurybus.jpg",
-      "/pickup.jpg",
-      "/tanker.jpg",
-    ],
-  },
-  {
-    title: "Earth Moving Equipment",
-    slug: "moving-equipment",
-    description: `
-We provide comprehensive solutions for moving industrial and construction equipment. 
-Our fleet includes forklifts, pallet jacks, cranes, and other machinery to ensure smooth operations and safe handling. 
-From site relocation to warehouse transfers, we manage the movement of heavy machinery efficiently and securely. 
-
-**Key Services Include:**
-- Transportation of construction machinery and industrial equipment
-- Forklift and pallet jack operations for internal movement
-- Safe loading and unloading procedures
-- Equipment tracking and scheduling
-
-**Benefits:**
-- Minimizes downtime during equipment transfers
-- Reduces risk of damage to machinery
-- Experienced operators handle all equipment safely
-    `,
-    gallery: [
-      "/Excavator-1.jpg",
-      "/FORKLIFT.jpg",
-      "/JCB.jpg",
-      "/GRADER.png",
-      "/sitepic.jpg",
-      "/machinary.jpg",
-    ],
-  },
-];
-
-
+  const categories = [
+    {
+      title: "Earth Moving Heavy & Light Vehicles",
+      slug: "moving-vehicles",
+      image: "/hiabtruck.jpg",
+      description: `We specialize in transporting a wide range of vehicles...`,
+      gallery: [
+        "/cranes.jpeg",
+        "/flattier.png",
+        "/hiabtruck.jpg",
+        "/luxurybus.jpg",
+        "/pickup.jpg",
+        "/tanker.jpg",
+      ],
+    },
+    {
+      title: "Earth Moving Equipment",
+      slug: "moving-equipment",
+      image: "/GRADER.png",
+      description: `We provide comprehensive solutions for moving industrial...`,
+      gallery: [
+        "/Excavator-1.jpg",
+        "/FORKLIFT.jpg",
+        "/JCB.jpg",
+        "/GRADER.png",
+        "/sitepic.jpg",
+        "/machinary.jpg",
+      ],
+    },
+  ];
 
   return (
     <section className="equipment-section">
@@ -186,6 +164,8 @@ From site relocation to warehouse transfers, we manage the movement of heavy mac
               navigate(`/category/${item.slug}`, { state: { item } })
             }
           >
+            {/* Display image */}
+{item.image && <img src={item.image} alt={item.title} style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "18px" }} />}
             <h4>{item.title}</h4>
             <p>Click to explore</p>
           </div>
