@@ -68,6 +68,12 @@ const BlogPage = () => {
             .read-more { font-size: 0.8rem; }
             .category-badge { font-size: 0.7rem; padding: 3px 8px; }
           }
+            @media (max-width: 768px) {
+  .blog-container {
+    margin-top: 20px;   /* restore gap on mobile */
+  }
+}
+
         `}
       </style>
 

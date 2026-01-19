@@ -19,32 +19,31 @@ export default function Navbar() {
           font-family: Arial, sans-serif;
         }
 
-        .navbar {
-          background: #0f0f0f;
-          color: #fff;
-          height: 64px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 24px;
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-        }
+       .navbar {
+  background: #0f0f0f;
+  color: #fff;
+  height: 100px;                 /* increased */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-        .logo-container {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-          height: 100%;
-        }
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
 
-        .logo-img {
-          height: 100%;
-          width: auto;
-          object-fit: contain;
-        }
+.logo-img {
+  height: 100px;                /* fits inside navbar */
+  width: auto;
+  object-fit: contain;
+}
+
 
         .logo-text {
           font-size: 22px;
@@ -86,32 +85,37 @@ export default function Navbar() {
           .logo-img {
             height: 48px;
           }
+@media (max-width: 768px) {
+  .navbar {
+    height: 72px;
+  }
 
-          .logo-text {
-            font-size: 18px;
-          }
+  .logo-img {
+    height: 52px;
+  }
 
-          .hamburger {
-            display: block;
-          }
+  .hamburger {
+    display: block;
+  }
 
-          .nav-links {
-            position: absolute;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            background: #0f0f0f;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 20px;
-            gap: 18px;
-            display: none;
-          }
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: #0f0f0f;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 18px;
+    display: none;
+  }
 
-          .nav-links.open {
-            display: flex;
-          }
-        }
+  .nav-links.open {
+    display: flex;
+  }
+}
+
       `}</style>
 
       <nav className="navbar">

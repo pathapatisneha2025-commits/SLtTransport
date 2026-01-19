@@ -26,6 +26,9 @@ const BlogDetailPage = () => {
 
     fetchBlog();
   }, [id]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (loading) return <p style={{ textAlign: "center", marginTop: "50px" }}>Loading...</p>;
   if (error) return <p style={{ textAlign: "center", marginTop: "50px", color: "red" }}>{error}</p>;

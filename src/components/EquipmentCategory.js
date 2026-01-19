@@ -180,7 +180,7 @@ Benefits:
       "/JCB.jpg",
       "/GRADER.png",
       "/sitepic.jpg",
-      "/machinary.jpg",
+      "/earthmoving.jpg",
     ],
   },
 ];
