@@ -177,17 +177,19 @@ style.innerHTML = `
 
 @media (max-width: 480px) {
   .gallery-card {
-    aspect-ratio: auto;      /* let image decide height */
-    padding: 12px;
+    aspect-ratio: unset;     /* remove fixed height */
+    padding: 0;              /* no padding */
+    overflow: hidden;
   }
 
   .gallery-card img {
-    position: relative;
+    position: relative;      /* VERY IMPORTANT */
     width: 100%;
     height: auto;
-    object-fit: contain;     /* NO CROPPING */
+    object-fit: contain;     /* full image, no crop */
   }
 }
+
 
 
 `;
