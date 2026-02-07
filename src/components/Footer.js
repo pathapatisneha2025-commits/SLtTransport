@@ -144,7 +144,7 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand */}
           <div className="footer-section footer-logo-section">
-            <img src="/companylogo.jpeg" alt="SLT Logo" />
+            <img src="/logo.jpeg" alt="SLT Logo" />
             <p>
               <strong>Swift Liger Transport And General Contracting</strong> delivers reliable
               logistics, heavy equipment rentals, manpower supply, and
@@ -169,16 +169,12 @@ const Footer = () => {
           {/* Contact */}
           <div className="footer-section">
             <h3>Contact Us</h3>
-           {/* Mobile Number */}
-  <div className="contact-item">
-    <span className="contact-icon">📱</span>
-    <span>Mobile: +971569569555</span>
-  </div>
+   
 
   {/* Landline Number */}
   <div className="contact-item">
     <span className="contact-icon">☎️</span>
-    <span>Landline: +97126271510</span>
+    <span>Landline:  +97126271510</span>
   </div>
             <div className="contact-item">
               <span className="contact-icon">✉️</span>

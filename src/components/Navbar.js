@@ -20,7 +20,7 @@ export default function Navbar() {
         }
 
        .navbar {
-  background: #0f0f0f;
+  background: #001f3f;
   color: #fff;
   height: 100px;                 /* increased */
   display: flex;
@@ -120,7 +120,7 @@ export default function Navbar() {
 
       <nav className="navbar">
         <div className="logo-container">
-          <img src="/companylogo.jpeg" alt="Logo" className="logo-img" />
+          <img src="/logo.jpeg" alt="Logo" className="logo-img" />
         </div>
 
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>

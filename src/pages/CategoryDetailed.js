@@ -7,7 +7,19 @@ export default function CategoryDetail() {
   const { item } = location.state || {};
   const galleryRefs = useRef([]);
 
-  // Intersection Observer for gallery highlight (LOGIC UNCHANGED)
+  // Helper: get readable name from image
+  const getImageName = (img) => {
+    if (typeof img === "string") {
+      const name = img.split("/").pop().split(".")[0];
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    } else if (typeof img === "object" && img.name) {
+      return img.name;
+    } else {
+      return "Image";
+    }
+  };
+
+  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -32,10 +44,11 @@ export default function CategoryDetail() {
       });
     };
   }, [item]);
-  useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Styles
   useEffect(() => {
@@ -63,7 +76,6 @@ export default function CategoryDetail() {
         line-height: 1.8;
       }
 
-      /* Bullet grid */
       .bullet-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -81,7 +93,6 @@ export default function CategoryDetail() {
         margin-bottom: 10px;
       }
 
-      /* Gallery */
       .gallery-column {
         display: flex;
         flex-direction: column;
@@ -90,16 +101,41 @@ export default function CategoryDetail() {
       }
 
       .gallery-card {
+        position: relative;
         background: #fff;
         border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         border: 3px solid transparent;
         opacity: 0.9;
-
-        aspect-ratio: 16 / 9;
         transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
         will-change: transform;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        border-radius: 12px;
+      }
+
+      .gallery-card p {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0,0,0,0.6);
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 1.3rem; /* increased size */
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
       }
 
       .gallery-card.highlight {
@@ -109,14 +145,6 @@ export default function CategoryDetail() {
         border-color: #f7b731;
       }
 
-      .gallery-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      /* Back button */
       .back-button {
         margin-top: 45px;
         display: inline-block;
@@ -133,22 +161,22 @@ export default function CategoryDetail() {
         background: #f5a623;
       }
 
-      /* RESPONSIVE */
+      /* Responsive */
       @media (max-width: 1024px) {
         .category-section h2 { font-size: 2.3rem; }
-        .gallery-card { aspect-ratio: 16 / 10; }
       }
 
       @media (max-width: 768px) {
         .category-section { padding: 60px 5%; }
         .category-section h2 { font-size: 2rem; }
         .bullet-grid { grid-template-columns: 1fr; }
-        .gallery-card { aspect-ratio: 4 / 3; }
       }
 
       @media (max-width: 480px) {
         .category-section { padding: 50px 4%; }
-        .gallery-card { aspect-ratio: 1 / 1; }
+        .gallery-column { gap: 20px; }
+        .gallery-card img { max-height: 300px; }
+        .gallery-card p { font-size: 1.1rem; padding: 6px 10px; } /* smaller for tiny screens */
       }
     `;
     document.head.appendChild(style);
@@ -159,7 +187,6 @@ export default function CategoryDetail() {
     return <p style={{ textAlign: "center", padding: "50px" }}>Category not found!</p>;
   }
 
-  // Description parsing (LOGIC UNCHANGED)
   const descriptionLines = item.description.split("\n");
   const paragraphs = [];
   const bullets = [];
@@ -181,18 +208,12 @@ export default function CategoryDetail() {
       <h2>{item.title}</h2>
 
       <div className="category-description">
-        {paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
+        {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
 
         {bullets.length > 0 && (
           <div className="bullet-grid">
-            <ul>
-              {bulletsLeft.map((b, i) => <li key={i}>{b}</li>)}
-            </ul>
-            <ul>
-              {bulletsRight.map((b, i) => <li key={i}>{b}</li>)}
-            </ul>
+            <ul>{bulletsLeft.map((b, i) => <li key={i}>{b}</li>)}</ul>
+            <ul>{bulletsRight.map((b, i) => <li key={i}>{b}</li>)}</ul>
           </div>
         )}
       </div>
@@ -205,10 +226,11 @@ export default function CategoryDetail() {
             ref={(el) => (galleryRefs.current[index] = el)}
           >
             <img
-              src={img}
+              src={typeof img === "string" ? img : img.src}
               alt={`${item.title} ${index + 1}`}
               loading="lazy"
             />
+            <p>{getImageName(img)}</p>
           </div>
         ))}
       </div>

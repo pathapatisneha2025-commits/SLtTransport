@@ -200,9 +200,8 @@ const ContactPage = () => {
           {/* Right: Info Cards */}
           <div className="contact-info-column">
             <div className="info-card">
-              <h4>Phone Number</h4>
-              <p>+91 98765 43210</p>
-              <p>+91 12345 67890</p>
+              <h4>LandLine Number</h4>
+              <p>+97126271510</p>
             </div>
             
             <div className="info-card">

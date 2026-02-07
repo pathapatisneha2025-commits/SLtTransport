@@ -120,67 +120,62 @@ export default function EquipmentCategories() {
   }, []);
 const categories = [
   {
-    title: "Earth Moving Heavy & Light Vehicles",
+    title: "Earth moving Transport",
     slug: "moving-vehicles",
     image: "/hiabtruck.jpg",
-    description: `
-We specialize in transporting a wide range of vehicles, from compact cars
-to heavy trucks and buses. Our team ensures that each vehicle is securely
-loaded, transported, and delivered safely to its destination.
-
-Whether it’s a commercial fleet, construction vehicles, or personal luxury
-vehicles, we provide efficient and reliable vehicle moving services.
-
-Key Services Include:
-- Safe transportation for cars, buses, trucks, and pickups
-- Specialized equipment for heavy vehicles
-- Insurance coverage for all transported vehicles
-- Timely delivery with tracking updates
-
-Benefits:
-- Reduced risk of damage
-- Professional handling by trained personnel
-- Customized transport solutions for every vehicle type
-    `,
+    description: ``,
     gallery: [
-      "/cranes.jpeg",
-      "/flattier.png",
-      "/hiabtruck.jpg",
-      "/luxurybus.jpg",
-      "/pickup.jpg",
-      "/tanker.jpg",
+  { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
+  { src: "/nonac.jpeg", name: "66 SEATER NON-A/C BUS" },
+  { src: "/54seater.png", name: "54 SEATER  BUS" },  
+  { src: "/34seater.png", name:"34 SEATER BUS COSTER" },
+  { src: "/14seater.png", name: "14 Seater Mini Bus" },
+{ src: "/haice.png", name: "14 Seater Hiace Bus" },
+{ src: "/9seater.png", name: "9 Seater Bus" },
+{ src: "/picups1ton.png", name: "pickups in 1 ton, 3 ton" },
+{ src: "/pickups20.jpeg", name: "pickups in 7 ton,10 ton,20 ton" },
+ { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
+{ src: "/watertanker.jpeg", name: "Water Tanker" },
+{ src: "/sewagetanker.jpeg", name: "Sewage Tankers" },
+
+
+
+
+
     ],
   },
   {
-    title: "Earth Moving Equipment",
+    title: "Earth moving Equipment",
     slug: "moving-equipment",
     image: "/GRADER.png",
     description: `
-We provide comprehensive solutions for moving industrial and construction
-equipment. Our fleet includes forklifts, pallet jacks, cranes, and other
-machinery to ensure smooth operations and safe handling.
 
-From site relocation to warehouse transfers, we manage the movement of heavy
-machinery efficiently and securely.
-
-Key Services Include:
-- Transportation of construction machinery and industrial equipment
-- Forklift and pallet jack operations for internal movement
-- Safe loading and unloading procedures
-- Equipment tracking and scheduling
-
-Benefits:
-- Minimizes downtime during equipment transfers
-- Reduces risk of damage to machinery
-- Experienced operators handle all equipment safely
     `,
     gallery: [
-      "/Excavator-1.jpg",
-      "/FORKLIFT.jpg",
-      "/JCB.jpg",
-      "/GRADER.png",
-      "/sitepic.jpg",
-      "/earthmoving.jpg",
+  { src: "/Forklift.png", name: "FORKLIFT" },
+  { src: "/Backhoeloader.png", name: "BACKHOE LOADER" },
+  { src: "/miniexcavator.png", name: "MINI EXCAVATOR" },
+    { src: "/skid.png", name: "SKID STEER LOADER" },
+
+      { src: "/TELEHANDLER.png", name: "TELEHANDLER" },
+
+        { src: "/wheeler.png", name: "WHEEL EXCAVATOR" },
+
+          { src: "/shoel.png", name: "SHOVEL 966" },
+
+            { src: "/roller.png", name: "ROLLER COMPACTOR" },
+
+              { src: "/singledrum.png", name: "SINGLE DRUM ROLLER" },
+
+                { src: "/lowbed.png", name: "LOW BED TRAILERS" },
+
+                  { src: "/flatbed.png", name: "FLAT BED TRAILER" },
+
+                    { src: "/cranes.png", name: "CRANES" },
+
+                      
+
+  
     ],
   },
 ];
