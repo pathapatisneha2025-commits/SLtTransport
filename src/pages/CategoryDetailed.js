@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CategoryDetail() {
@@ -6,6 +6,7 @@ export default function CategoryDetail() {
   const navigate = useNavigate();
   const { item } = location.state || {};
   const galleryRefs = useRef([]);
+  const [loadedImages, setLoadedImages] = useState({}); // track loaded images
 
   // Helper: get readable name from image
   const getImageName = (img) => {
@@ -89,9 +90,7 @@ export default function CategoryDetail() {
         margin: 0;
       }
 
-      .bullet-grid li {
-        margin-bottom: 10px;
-      }
+      .bullet-grid li { margin-bottom: 10px; }
 
       .gallery-column {
         display: flex;
@@ -102,25 +101,32 @@ export default function CategoryDetail() {
 
       .gallery-card {
         position: relative;
-        background: #fff;
+        background: #e0e0e0; /* placeholder color */
         border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         border: 3px solid transparent;
         opacity: 0.9;
         transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-        will-change: transform;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        aspect-ratio: 16 / 10;
       }
 
       .gallery-card img {
         width: 100%;
-        height: auto;
-        object-fit: contain;
+        height: 100%;
+        object-fit: contain; /* show full image */
         display: block;
         border-radius: 12px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .gallery-card img.loaded {
+        opacity: 1;
       }
 
       .gallery-card p {
@@ -132,10 +138,14 @@ export default function CategoryDetail() {
         color: #fff;
         padding: 8px 14px;
         border-radius: 10px;
-        font-size: 1.3rem; /* increased size */
+        font-size: 1.3rem; 
         font-weight: 600;
         text-align: center;
         margin: 0;
+        max-width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .gallery-card.highlight {
@@ -157,46 +167,35 @@ export default function CategoryDetail() {
         transition: background 0.3s ease;
       }
 
-      .back-button:hover {
-        background: #f5a623;
-      }
+      .back-button:hover { background: #f5a623; }
 
       /* Responsive */
-      @media (max-width: 1024px) {
-        .category-section h2 { font-size: 2.3rem; }
-      }
-
+      @media (max-width: 1024px) { .category-section h2 { font-size: 2.3rem; } }
       @media (max-width: 768px) {
         .category-section { padding: 60px 5%; }
         .category-section h2 { font-size: 2rem; }
         .bullet-grid { grid-template-columns: 1fr; }
+        .gallery-card { aspect-ratio: 4 / 3; }
       }
-
       @media (max-width: 480px) {
         .category-section { padding: 50px 4%; }
-        .gallery-column { gap: 20px; }
-        .gallery-card img { max-height: 300px; }
-        .gallery-card p { font-size: 1.1rem; padding: 6px 10px; } /* smaller for tiny screens */
+        .gallery-card { aspect-ratio: 1 / 1; }
+        .gallery-card p { font-size: 1.1rem; padding: 6px 10px; }
       }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
 
-  if (!item) {
-    return <p style={{ textAlign: "center", padding: "50px" }}>Category not found!</p>;
-  }
+  if (!item) return <p style={{ textAlign: "center", padding: "50px" }}>Category not found!</p>;
 
   const descriptionLines = item.description.split("\n");
   const paragraphs = [];
   const bullets = [];
 
   descriptionLines.forEach((line) => {
-    if (line.startsWith("- ")) {
-      bullets.push(line.replace("- ", ""));
-    } else if (line.trim()) {
-      paragraphs.push(line);
-    }
+    if (line.startsWith("- ")) bullets.push(line.replace("- ", ""));
+    else if (line.trim()) paragraphs.push(line);
   });
 
   const midIndex = Math.ceil(bullets.length / 2);
@@ -209,7 +208,6 @@ export default function CategoryDetail() {
 
       <div className="category-description">
         {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
-
         {bullets.length > 0 && (
           <div className="bullet-grid">
             <ul>{bulletsLeft.map((b, i) => <li key={i}>{b}</li>)}</ul>
@@ -229,6 +227,8 @@ export default function CategoryDetail() {
               src={typeof img === "string" ? img : img.src}
               alt={`${item.title} ${index + 1}`}
               loading="lazy"
+              className={loadedImages[index] ? "loaded" : ""}
+              onLoad={() => setLoadedImages((prev) => ({ ...prev, [index]: true }))}
             />
             <p>{getImageName(img)}</p>
           </div>
