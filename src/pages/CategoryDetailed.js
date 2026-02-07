@@ -110,10 +110,10 @@ style.innerHTML = `
 
 .gallery-card img {
   position: absolute;
-  inset: 0;               /* top:0 right:0 bottom:0 left:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* fills container, no lines */
+  object-fit: cover; /* desktop */
   display: block;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -177,14 +177,18 @@ style.innerHTML = `
 
 @media (max-width: 480px) {
   .gallery-card {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: auto;      /* let image decide height */
+    padding: 12px;
   }
 
-  .gallery-card p {
-    font-size: 1.1rem;
-    padding: 6px 10px;
+  .gallery-card img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;     /* NO CROPPING */
   }
 }
+
 
 `;
 ;
