@@ -234,13 +234,20 @@ style.innerHTML = `
             className="gallery-card"
             ref={(el) => (galleryRefs.current[index] = el)}
           >
-            <img
-              src={typeof img === "string" ? img : img.src}
-              alt={`${item.title} ${index + 1}`}
-              loading="lazy"
-              className={loadedImages[index] ? "loaded" : ""}
-              onLoad={() => setLoadedImages((prev) => ({ ...prev, [index]: true }))}
-            />
+           <img
+  src={typeof img === "string" ? img : img.src}
+  alt={`${item.title} ${index + 1}`}
+  loading={index < 2 ? "eager" : "lazy"}
+  fetchpriority={index === 0 ? "high" : "auto"}
+  decoding="async"
+  width="1200"
+  height="900"
+  className={loadedImages[index] ? "loaded" : ""}
+  onLoad={() =>
+    setLoadedImages((prev) => ({ ...prev, [index]: true }))
+  }
+/>
+
             <p>{getImageName(img)}</p>
           </div>
         ))}
