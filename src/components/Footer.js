@@ -144,7 +144,7 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand */}
           <div className="footer-section footer-logo-section">
-            <img src="/logo.jpeg" alt="SLT Logo" />
+            <img src="/companylogo.jpeg" alt="SLT Logo" />
             <p>
               <strong>Swift Liger Transport And General Contracting</strong> delivers reliable
               logistics, heavy equipment rentals, manpower supply, and
@@ -182,13 +182,13 @@ const Footer = () => {
             </div>
             <div className="contact-item">
               <span className="contact-icon">📍</span>
-              <span>Industrial Area, Anantapur, Andhra Pradesh, India</span>
+              <span>MUSSAFAH-45 , ABU DHABI, UAE</span>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          © {new Date().getFullYear()} <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
+          © 2022 <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
         </div>
       </footer>
     </>

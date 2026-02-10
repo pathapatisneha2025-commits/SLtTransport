@@ -212,8 +212,7 @@ const ContactPage = () => {
 
             <div className="info-card">
               <h4>Head Office</h4>
-              <p>SLT Transport Yard, Industrial Area,</p>
-              <p>Anantapur, Andhra Pradesh - 515001</p>
+              <p>MUSSAFAH-45 , ABU DHABI, UAE</p>
             </div>
 
             <div className="map-placeholder">

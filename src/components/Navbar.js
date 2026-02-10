@@ -120,8 +120,15 @@ export default function Navbar() {
 
       <nav className="navbar">
         <div className="logo-container">
-          <img src="/logo.jpeg" alt="Logo" className="logo-img" />
-        </div>
+    <Link to="/" onClick={handleLinkClick}>
+      <img
+        src="/companylogo.jpeg"
+        alt="Logo"
+        className="logo-img"
+        style={{ cursor: "pointer" }}
+      />
+    </Link>
+  </div>
 
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <Link to="/" onClick={handleLinkClick}>Home</Link>

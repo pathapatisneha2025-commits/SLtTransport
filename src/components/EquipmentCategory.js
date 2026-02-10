@@ -119,31 +119,7 @@ export default function EquipmentCategories() {
     return () => document.head.removeChild(style);
   }, []);
 const categories = [
-  {
-    title: "Earth moving Transport",
-    slug: "moving-vehicles",
-    image: "/hiabtruck.jpg",
-    description: ``,
-    gallery: [
-  { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
-  { src: "/nonac.jpeg", name: "66 SEATER NON-A/C BUS" },
-  { src: "/54seater.png", name: "54 SEATER  BUS" },  
-  { src: "/34seater.png", name:"34 SEATER BUS COSTER" },
-  { src: "/14seater.png", name: "14 Seater Mini Bus" },
-{ src: "/haice.png", name: "14 Seater Hiace Bus" },
-{ src: "/9seater.png", name: "9 Seater Bus" },
-{ src: "/picups1ton.png", name: "pickups in 1 ton, 3 ton" },
-{ src: "/pickups20.jpeg", name: "pickups in 7 ton,10 ton,20 ton" },
- { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
-{ src: "/watertanker.jpeg", name: "Water Tanker" },
-{ src: "/sewagetanker.jpeg", name: "Sewage Tankers" },
-
-
-
-
-
-    ],
-  },
+ 
   {
     title: "Earth moving Equipment",
     slug: "moving-equipment",
@@ -176,6 +152,39 @@ const categories = [
                       
 
   
+    ],
+  },
+
+   {
+    title: "Earth moving Transport",
+    slug: "moving-vehicles",
+    image: "/hiabtruck.jpg",
+    description: ``,
+    gallery: [
+  { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
+  { src: "/nonac.jpeg", name: "66 SEATER NON-A/C BUS" },
+  { src: "/54seater.png", name: "54 SEATER  BUS" },  
+  { src: "/34seater.png", name:"34 SEATER BUS COSTER" },
+  { src: "/14seater.png", name: "14 Seater Mini Bus" },
+{ src: "/haice.png", name: "14 seater High Roof Bus" },
+{ src: "/9seater.png", name: "9 Seater Bus" },
+{ src: "/picups1ton.png", name: "Pickups in 1 TON, 3 TON" },
+{ src: "/pickups20.jpeg", name: "Pickups in 7 TON, 10 TON, 20 TON" },
+ { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
+{ src: "/watertanker1000.jpeg", name: "Water Tanker 1000" },
+{ src: "/watertanker5000.jpeg", name: "Water Tanker 5000" },
+{ src: "/watertanker10000.jpeg", name: "Water Tanker 10000" },
+
+{ src: "/sewage3000.jpeg", name: "Sewage Tankers 3000" },
+{ src: "/seweage5000.jpeg", name: "Sewage Tankers 5000" },
+
+{ src: "/seweage10000.jpeg", name: "Sewage Tankers 10000" },
+
+
+
+
+
+
     ],
   },
 ];

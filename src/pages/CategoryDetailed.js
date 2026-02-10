@@ -6,255 +6,201 @@ export default function CategoryDetail() {
   const navigate = useNavigate();
   const { item } = location.state || {};
   const galleryRefs = useRef([]);
-  const [loadedImages, setLoadedImages] = useState({}); // track loaded images
+  const [loadedImages, setLoadedImages] = useState({});
 
-  // Helper: get readable name from image
   const getImageName = (img) => {
     if (typeof img === "string") {
       const name = img.split("/").pop().split(".")[0];
-      return name.charAt(0).toUpperCase() + name.slice(1);
+      return name.replace(/-/g, ' ').replace(/_/g, ' ').toUpperCase();
     } else if (typeof img === "object" && img.name) {
-      return img.name;
-    } else {
-      return "Image";
+      return img.name.toUpperCase();
     }
+    return "EQUIPMENT";
   };
 
-  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("highlight");
-          } else {
-            entry.target.classList.remove("highlight");
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.2 }
     );
-
-    galleryRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      galleryRefs.current.forEach((el) => {
-        if (el) observer.unobserve(el);
-      });
-    };
+    galleryRefs.current.forEach((el) => { if (el) observer.observe(el); });
+    return () => galleryRefs.current.forEach((el) => { if (el) observer.unobserve(el); });
   }, [item]);
 
-  // Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  // Styles
-  useEffect(() => {
     const style = document.createElement("style");
-   // Inside your useEffect for styles
-style.innerHTML = `
-.category-section {
-  padding: 70px 6%;
-  background: linear-gradient(180deg, #f8fafc, #eef2f7);
-  text-align: center;
-}
+    style.innerHTML = `
+      .category-section {
+        padding: 60px 8%;
+        background: #ffffff; 
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-.category-section h2 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 10px;
-}
+      .category-section h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-.category-description {
-  text-align: left;
-  max-width: 900px;
-  margin: 20px auto 40px;
-  color: #334155;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 20px;
+      }
 
-.bullet-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 40px;
-  margin-top: 25px;
-}
+      .gallery-item-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
 
-.bullet-grid ul { list-style: disc inside; padding: 0; margin: 0; }
-.bullet-grid li { margin-bottom: 10px; }
+      /* Title BELOW the image */
+      .item-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366; /* Dark Navy */
+        margin-top: 12px; /* space above the title */
+        text-align: center;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-.gallery-column {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin-top: 50px;
-}
+      .gallery-card {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: #f8f9fa;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 4px solid transparent;
+        transition: all 0.3s ease;
+      }
 
-.gallery-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3; /* stable height BEFORE image loads */
-  background: #e5e7eb; /* skeleton placeholder */
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  border: 3px solid transparent;
-  opacity: 0.95;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-}
+      .gallery-card img {
+        width: 85%;
+        height: 85%;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
 
-.gallery-card img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* desktop */
-  display: block;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
+      .gallery-card img.loaded {
+        opacity: 1;
+      }
 
+      /* Hover & Highlight Effect */
+      .gallery-item-container.highlight .gallery-card {
+        border-bottom: 4px solid #f7b731; /* Yellow line */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      }
 
-.gallery-card img.loaded {
-  opacity: 1;
-}
+      .back-button {
+        margin-top: 60px;
+        display: inline-block;
+        padding: 12px 30px;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 4px;
+      }
 
-.gallery-card p {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 1.3rem; 
-  font-weight: 600;
-  text-align: center;
-  margin: 0;
-  max-width: 90%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+      @media (max-width: 1024px) {
+        .category-section {
+          padding: 50px 6%;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 32px;
+        }
+        .item-title {
+          font-size: 1.1rem;
+        }
+      }
 
-.gallery-card.highlight {
-  transform: scale(1.03);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
-  opacity: 1;
-  border-color: #f7b731;
-}
-
-.back-button {
-  margin-top: 45px;
-  display: inline-block;
-  padding: 12px 26px;
-  background: #f7b731;
-  color: #fff;
-  border-radius: 14px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.back-button:hover { background: #f5a623; }
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .category-section h2 { font-size: 2.3rem; }
-}
-
-@media (max-width: 768px) {
-  .category-section { padding: 60px 5%; }
-  .category-section h2 { font-size: 2rem; }
-  .bullet-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-  .gallery-card {
-    aspect-ratio: unset;     /* remove fixed height */
-    padding: 0;              /* no padding */
-    overflow: hidden;
-  }
-
-  .gallery-card img {
-    position: relative;      /* VERY IMPORTANT */
-    width: 100%;
-    height: auto;
-    object-fit: contain;     /* full image, no crop */
-  }
-}
-
-
-
-`;
-;
+      @media (max-width: 600px) {
+        .category-section {
+          padding: 40px 5%;
+        }
+        .category-section h2 {
+          font-size: 1.7rem;
+          margin-bottom: 30px;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .item-title {
+          font-size: 1.05rem;
+          margin-top: 10px;
+        }
+        .gallery-card {
+          aspect-ratio: 4 / 3;
+        }
+        .gallery-card img {
+          width: 90%;
+          height: 90%;
+        }
+        .back-button {
+          width: 100%;
+          max-width: 320px;
+          text-align: center;
+        }
+      }
+    `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
 
-  if (!item) return <p style={{ textAlign: "center", padding: "50px" }}>Category not found!</p>;
-
-  const descriptionLines = item.description.split("\n");
-  const paragraphs = [];
-  const bullets = [];
-
-  descriptionLines.forEach((line) => {
-    if (line.startsWith("- ")) bullets.push(line.replace("- ", ""));
-    else if (line.trim()) paragraphs.push(line);
-  });
-
-  const midIndex = Math.ceil(bullets.length / 2);
-  const bulletsLeft = bullets.slice(0, midIndex);
-  const bulletsRight = bullets.slice(midIndex);
+  if (!item) return <div style={{padding: "100px", textAlign: "center"}}>Loading...</div>;
 
   return (
     <section className="category-section">
       <h2>{item.title}</h2>
 
-      <div className="category-description">
-        {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
-        {bullets.length > 0 && (
-          <div className="bullet-grid">
-            <ul>{bulletsLeft.map((b, i) => <li key={i}>{b}</li>)}</ul>
-            <ul>{bulletsRight.map((b, i) => <li key={i}>{b}</li>)}</ul>
-          </div>
-        )}
-      </div>
-
-      <div className="gallery-column">
+      <div className="gallery-grid">
         {item.gallery.map((img, index) => (
-          <div
-            key={index}
-            className="gallery-card"
+          <div 
+            key={index} 
+            className="gallery-item-container"
             ref={(el) => (galleryRefs.current[index] = el)}
           >
-           <img
-  src={typeof img === "string" ? img : img.src}
-  alt={`${item.title} ${index + 1}`}
-  loading={index < 2 ? "eager" : "lazy"}
-  fetchpriority={index === 0 ? "high" : "auto"}
-  decoding="async"
-  width="1200"
-  height="900"
-  className={loadedImages[index] ? "loaded" : ""}
-  onLoad={() =>
-    setLoadedImages((prev) => ({ ...prev, [index]: true }))
-  }
-/>
-
-            <p>{getImageName(img)}</p>
+            {/* Image first */}
+            <div className="gallery-card">
+              <img
+                src={typeof img === "string" ? img : img.src}
+                alt={item.title}
+                className={loadedImages[index] ? "loaded" : ""}
+                onLoad={() => setLoadedImages((prev) => ({ ...prev, [index]: true }))}
+              />
+            </div>
+            {/* Title BELOW the image */}
+            <div className="item-title">{getImageName(img)}</div>
           </div>
         ))}
       </div>
 
       <div className="back-button" onClick={() => navigate(-1)}>
-        ← Back to Categories
+        Back to Fleet
       </div>
     </section>
   );

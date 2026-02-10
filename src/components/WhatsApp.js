@@ -5,9 +5,8 @@ export default function WhatsAppSupport() {
   const [open, setOpen] = useState(false);
 
   const whatsappNumbers = [
-    "+97154247955",
-    "+971569569555",
-    "+971569666332",
+    "+971542479555",
+    "+97156 956 9555",
   ];
 
   const openWhatsApp = (num) => {
@@ -57,14 +56,14 @@ export default function WhatsAppSupport() {
               </div>
             ))}
 
-            {/* Call */}
+            {/* Call
             <div style={cardStyle}>
               <FaPhoneAlt />
               <div>
                 <strong>Talk to us</strong>
                 <p>Call customer care</p>
               </div>
-            </div>
+            </div> */}
 
             {/* Email */}
             <div style={cardStyle}>
