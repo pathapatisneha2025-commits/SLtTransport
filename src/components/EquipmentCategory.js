@@ -179,7 +179,7 @@ const categories = [
 // { src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
 // { src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
 
-{ src: "/sewagetankers.jpeg", name: "Sewage Tankers 3000,5000,10000 gallons" },
+{ src: "/seweagetankers.jpeg", name: "Sewage Tankers 3000,5000,10000 gallons" },
 // { src: "/sewagetanker.jpeg", name: "Sewage Tankers 5000 gallons" },
 
 // { src: "/sewagetanker.jpeg", name: "Sewage Tankers 10000 gallons" },
