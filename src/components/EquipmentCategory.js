@@ -161,9 +161,9 @@ const categories = [
     image: "/recovery.jpeg",
     description: ``,
     gallery: [
-  { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
+  // { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
   { src: "/nonac.jpeg", name: "66 SEATER NON-A/C BUS" },
-  { src: "/54seater.png", name: "54 SEATER  BUS" },  
+  { src: "/54seater.png", name: "54,66 SEATER  BUS" },  
   { src: "/34seater.png", name:"34 SEATER BUS COSTER" },
   { src: "/14seater.png", name: "14 Seater Mini Bus" },
 { src: "/haice.png", name: "14 seater High Roof Bus" },
@@ -175,14 +175,14 @@ const categories = [
 { src: "/dumptruck.jpeg", name: "Dump Truck 35,45 Cbm" },
 
  { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
-{ src: "/wantertankers.jpeg", name: "Water Tankers 1000 gallons" },
-{ src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
-{ src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
+{ src: "/watertanker.jpeg", name: "Water Tankers 1000,5000,10000 gallons" },
+// { src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
+// { src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
 
-{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 3000 gallons" },
-{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 5000 gallons" },
+{ src: "/sewagetankers.jpeg", name: "Sewage Tankers 3000,5000,10000 gallons" },
+// { src: "/sewagetanker.jpeg", name: "Sewage Tankers 5000 gallons" },
 
-{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 10000 gallons" },
+// { src: "/sewagetanker.jpeg", name: "Sewage Tankers 10000 gallons" },
 
 
 
