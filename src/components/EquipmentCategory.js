@@ -130,22 +130,28 @@ const categories = [
     gallery: [
   { src: "/Forklift.png", name: "FORKLIFT" },
   { src: "/Backhoeloader.png", name: "BACKHOE LOADER" },
+    { src: "/chainexcavator.jpeg", name: "20 ton chain excavator" },
+
   { src: "/miniexcavator.png", name: "MINI EXCAVATOR" },
     { src: "/skid.png", name: "SKID STEER LOADER" },
 
       { src: "/TELEHANDLER.png", name: "TELEHANDLER" },
 
         { src: "/wheeler.png", name: "WHEEL EXCAVATOR" },
+                  { src: "/dozer.jpeg", name: "Dozer" },
+
 
           { src: "/shoel.png", name: "SHOVEL 966/950" },
+                      { src: "/rollercompactor.png", name: "WALK BEHIND ROLLER COMPACTOR DOUBLE DRUM" },
+
 
             { src: "/roller.png", name: "ROLLER COMPACTOR" },
 
-              { src: "/singledrum.png", name: "SINGLE DRUM ROLLER" },
+              { src: "/singledrum.png", name: "Double DRUM ROLLER" },
 
-                { src: "/lowbed.png", name: "LOW BED TRAILERS" },
+                { src: "/lowbed.jpeg", name: "LOW BED TRAILERS" },
 
-                  { src: "/flatbed.png", name: "FLAT BED TRAILER" },
+                  { src: "/flatbed.jpeg", name: "FLAT BED TRAILERS" },
 
                     { src: "/cranes.png", name: "CRANES" },
 
@@ -175,11 +181,11 @@ const categories = [
 { src: "/dumptruck.jpeg", name: "Dump Truck 35,45 Cbm" },
 
  { src: "/recovery.jpeg", name: "RECOVERY 7, 10, 15 TON" },
-{ src: "/watertanker.jpeg", name: "Water Tankers 1000,5000,10000 gallons" },
+{ src: "/watertanker.jpeg", name: "Water Tankers 1000-10000 gallons" },
 // { src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
 // { src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
 
-{ src: "/seweagetankers.jpeg", name: "Sewage Tankers 3000,5000,10000 gallons" },
+{ src: "/seweagetankers.jpeg", name: "Sewage Tankers 1000-10000 gallons" },
 // { src: "/sewagetanker.jpeg", name: "Sewage Tankers 5000 gallons" },
 
 // { src: "/sewagetanker.jpeg", name: "Sewage Tankers 10000 gallons" },
