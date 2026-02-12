@@ -213,10 +213,10 @@ const ContactPage = () => {
               <h4>Head Office</h4>
               <p>MUSSAFAH-45 , ABU DHABI, UAE</p>
             </div>
-
+{/* 
             <div className="map-placeholder">
               <p>📍 Google Maps Viewport</p>
-            </div>
+            </div> */}
           </div>
 
         </div>

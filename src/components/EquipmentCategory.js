@@ -137,7 +137,7 @@ const categories = [
 
         { src: "/wheeler.png", name: "WHEEL EXCAVATOR" },
 
-          { src: "/shoel.png", name: "SHOVEL 966" },
+          { src: "/shoel.png", name: "SHOVEL 966/950" },
 
             { src: "/roller.png", name: "ROLLER COMPACTOR" },
 
@@ -170,15 +170,19 @@ const categories = [
 { src: "/9seater.png", name: "9 Seater Bus" },
 { src: "/picups1ton.png", name: "Pickups in 1 TON, 3 TON" },
 { src: "/pickups20.jpeg", name: "Pickups in 7 TON, 10 TON, 20 TON" },
+
+{ src: "/haiboomtruck.jpeg", name: "Hiab Boom Truck 7,10,15 Ton." },
+{ src: "/dumptruck.jpeg", name: "Dump Truck 35,45 Cbm" },
+
  { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
-{ src: "/watertanker1000.jpeg", name: "Water Tanker 1000" },
-{ src: "/watertanker5000.jpeg", name: "Water Tanker 5000" },
-{ src: "/watertanker10000.jpeg", name: "Water Tanker 10000" },
+{ src: "/wantertankers.jpeg", name: "Water Tankers 1000 gallons" },
+{ src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
+{ src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
 
-{ src: "/sewage3000.jpeg", name: "Sewage Tankers 3000" },
-{ src: "/seweage5000.jpeg", name: "Sewage Tankers 5000" },
+{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 3000 gallons" },
+{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 5000 gallons" },
 
-{ src: "/seweage10000.jpeg", name: "Sewage Tankers 10000" },
+{ src: "/sewagetanker.jpeg", name: "Sewage Tankers 10000 gallons" },
 
 
 

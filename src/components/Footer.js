@@ -153,7 +153,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          © 2026 <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
+          © 2022 <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
         </div>
       </footer>
     </>
