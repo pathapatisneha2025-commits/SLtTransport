@@ -34,11 +34,11 @@ const BlogPage = () => {
           .blog-page { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; padding-bottom: 80px; }
           .blog-hero { background: #002147; color: white; padding: 80px 10%; text-align: center; }
           .blog-hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
-        .blog-container {
-  max-width: 1200px;
-  margin: -40px auto 0; /* keep desktop overlap */
-  padding: 0 20px;
-}
+          .blog-container { 
+            max-width: 1200px; 
+            margin: 50px auto 0; /* Changed from -40px to 50px for clear separation */
+            padding: 0 20px; 
+          }    
 
 /* Mobile adjustments */
 @media (max-width: 480px) {

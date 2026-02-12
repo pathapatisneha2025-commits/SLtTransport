@@ -36,14 +36,28 @@ export default function Navbar() {
   display: flex;
   align-items: center;
   height: 100%;
+  padding: 0;      /* Removes any side gaps */
+  margin: 0;       /* Removes any outer gaps */
+  overflow: hidden; /* Ensures no bleed outside the navbar */
 }
 
 .logo-img {
-  height: 100px;                /* fits inside navbar */
+  height: 100px;    /* Matches navbar height for "No Gap" look */
   width: auto;
+  display: block;   /* Removes the "ghost" gap at the bottom of images */
   object-fit: contain;
-}
 
+  /* Force transparency of the black background */
+  mix-blend-mode: screen; 
+  
+  /* Pushing contrast higher ensures the black background 
+     becomes 100% transparent and the gold becomes more vivid */
+  filter: brightness(1.3) contrast(1.5); 
+  
+  /* If the logo has a slight border in the file, 
+     this helps clip it */
+  margin: -2px 0; 
+}
 
         .logo-text {
           font-size: 22px;

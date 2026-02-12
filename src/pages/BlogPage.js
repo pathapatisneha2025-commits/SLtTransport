@@ -35,8 +35,12 @@ const BlogPage = () => {
           .blog-hero { background: #002147; color: white; padding: 80px 10%; text-align: center; }
           .blog-hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
           .blog-hero p { opacity: 0.8; font-size: 1.1rem; }
-          .blog-container { max-width: 1200px; margin: -40px auto 0; padding: 0 20px; }
-          .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+/* FIXED OVERLAP HERE */
+          .blog-container { 
+            max-width: 1200px; 
+            margin: 50px auto 0; /* Changed from -40px to 50px for clear separation */
+            padding: 0 20px; 
+          }          .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
           .post-card { background: white; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
           .post-card:hover { transform: translateY(-5px); }
           .post-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }

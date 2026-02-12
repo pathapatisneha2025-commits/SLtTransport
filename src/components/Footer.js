@@ -28,10 +28,22 @@ const Footer = () => {
           font-weight: 600;
         }
 
-        /* Brand */
+        /* Brand & Logo Fix */
+        .footer-logo-section .logo-wrapper {
+          background: #001f3f; /* Matches your navbar color for consistency */
+          display: inline-block;
+          padding: 5px 15px;
+          border-radius: 4px;
+          margin-bottom: 15px;
+        }
+
         .footer-logo-section img {
           max-width: 150px;
-          margin-bottom: 12px;
+          height: auto;
+          display: block;
+          /* Blending logic for the JPEG box */
+          mix-blend-mode: screen; 
+          filter: brightness(1.2) contrast(1.2);
         }
 
         .footer-logo-section p {
@@ -59,7 +71,7 @@ const Footer = () => {
         }
 
         .footer-links a:hover {
-          color: #2563eb;
+          color: #f5c518; /* Matches your brand gold */
         }
 
         /* Contact */
@@ -74,32 +86,6 @@ const Footer = () => {
 
         .contact-icon {
           font-size: 1.2rem;
-          color: #2563eb;
-        }
-
-        /* Social Icons */
-        .social-icons {
-          display: flex;
-          gap: 15px;
-          margin-top: 15px;
-        }
-
-        .social-icons a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 36px;
-          height: 36px;
-          background-color: #e2e8f0;
-          border-radius: 50%;
-          color: #2563eb;
-          font-size: 1.1rem;
-          transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-          background-color: #2563eb;
-          color: #fff;
         }
 
         /* Footer Bottom */
@@ -111,31 +97,13 @@ const Footer = () => {
           color: #64748b;
         }
 
-        /* Tablet */
         @media (max-width: 992px) {
-          .footer-content {
-            grid-template-columns: 1fr 1fr;
-          }
+          .footer-content { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Mobile */
         @media (max-width: 576px) {
-          .footer-container {
-            padding: 50px 6%;
-          }
-
-          .footer-content {
-            grid-template-columns: 1fr;
-            gap: 30px;
-          }
-
-          .footer-section h3 {
-            margin-bottom: 12px;
-          }
-
-          .footer-bottom {
-            font-size: 0.8rem;
-          }
+          .footer-container { padding: 50px 6%; }
+          .footer-content { grid-template-columns: 1fr; gap: 30px; }
         }
         `}
       </style>
@@ -144,38 +112,35 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand */}
           <div className="footer-section footer-logo-section">
-            <img src="/companylogo.jpeg" alt="SLT Logo" />
+            <div className="logo-wrapper">
+              <img src="/companylogo.jpeg" alt="SLT Logo" />
+            </div>
             <p>
               <strong>Swift Liger Transport And General Contracting</strong> delivers reliable
               logistics, heavy equipment rentals, manpower supply, and
               industrial solutions with quality and commitment.
             </p>
-           
           </div>
 
           {/* Quick Links */}
           <div className="footer-section footer-links">
             <h3>Quick Links</h3>
             <ul>
-            <li><Link to="/">Home</Link></li>
-<li><Link to="/services">Services</Link></li>
-<li><Link to="/blog">Blog</Link></li>
-<li><Link to="/oilandgas">OilandGas</Link></li>
-<li><Link to="/contact">Contact</Link></li>
-
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/oilandgas">Oil & Gas</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="footer-section">
             <h3>Contact Us</h3>
-   
-
-  {/* Landline Number */}
-  <div className="contact-item">
-    <span className="contact-icon">☎️</span>
-    <span>Landline:  +97126271510</span>
-  </div>
+            <div className="contact-item">
+              <span className="contact-icon">☎️</span>
+              <span>Landline: +97126271510</span>
+            </div>
             <div className="contact-item">
               <span className="contact-icon">✉️</span>
               <span>contact@sltservices.com</span>
@@ -188,7 +153,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          © 2022 <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
+          © 2026 <strong>Swift Liger Transport And General Contracting</strong>. All Rights Reserved.
         </div>
       </footer>
     </>

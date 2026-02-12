@@ -123,7 +123,7 @@ const categories = [
   {
     title: "Earth moving Equipment",
     slug: "moving-equipment",
-    image: "/GRADER.png",
+    image: "/earthmovingequipment.png",
     description: `
 
     `,
@@ -158,7 +158,7 @@ const categories = [
    {
     title: "Earth moving Transport",
     slug: "moving-vehicles",
-    image: "/hiabtruck.jpg",
+    image: "/recovery.jpeg",
     description: ``,
     gallery: [
   { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },

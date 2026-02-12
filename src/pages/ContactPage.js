@@ -48,15 +48,14 @@ const ContactPage = () => {
           }
 
           /* Main Layout */
-          .contact-container {
+       .contact-container {
             max-width: 1200px;
-            margin: -50px auto 0;
+            margin: 60px auto 0; /* Changed from -50px to 60px for clear separation */
             display: grid;
             grid-template-columns: 1.5fr 1fr;
-            gap: 30px;
+            gap: 40px;
             padding: 0 20px;
           }
-
           /* Form Styles */
           .contact-form-card {
             background: white;
