@@ -163,18 +163,18 @@ const categories = [
     gallery: [
   // { src: "/seaterbus.png", name: "66 SEATER A/C BUS" },
   { src: "/nonac.jpeg", name: "66 SEATER NON-A/C BUS" },
-  { src: "/54seater.png", name: "54,66 SEATER  BUS" },  
+  { src: "/54seater.png", name: "54,66 SEATER A/C BUS" },  
   { src: "/34seater.png", name:"34 SEATER BUS COSTER" },
   { src: "/14seater.png", name: "14 Seater Mini Bus" },
 { src: "/haice.png", name: "14 seater High Roof Bus" },
 { src: "/9seater.png", name: "9 Seater Bus" },
-{ src: "/picups1ton.png", name: "Pickups in 1 TON, 3 TON" },
-{ src: "/pickups20.jpeg", name: "Pickups in 7 TON, 10 TON, 20 TON" },
+{ src: "/picups1ton.png", name: "PICKUPS 1, 3 TON " },
+{ src: "/pickups20.jpeg", name: "PICKUPS 7,10, 20 TON" },
 
 { src: "/haiboomtruck.jpeg", name: "Hiab Boom Truck 7,10,15 Ton." },
 { src: "/dumptruck.jpeg", name: "Dump Truck 35,45 Cbm" },
 
- { src: "/recovery.jpeg", name: "RECOVERY 7 TON,10 TON,15 TON" },
+ { src: "/recovery.jpeg", name: "RECOVERY 7, 10, 15 TON" },
 { src: "/watertanker.jpeg", name: "Water Tankers 1000,5000,10000 gallons" },
 // { src: "/wantertankers.jpeg", name: "Water Tankers 5000 gallons" },
 // { src: "/wantertankers.jpeg", name: "Water Tankers 10000 gallons " },
