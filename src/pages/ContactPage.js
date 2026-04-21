@@ -205,8 +205,14 @@ const ContactPage = () => {
             
             <div className="info-card">
               <h4>Email Support</h4>
-              <p>contact@sltservices.com</p>
-              <p>support@sltservices.com</p>
+              <p>info@swiftliger.com</p>
+              <p>sales@swiftliger.com</p>
+              <p>careers@swiftliger.com</p>
+
+              <p>accounts@swiftliger.com</p>
+
+              <p>operations@swiftliger.com</p>
+
             </div>
 
             <div className="info-card">

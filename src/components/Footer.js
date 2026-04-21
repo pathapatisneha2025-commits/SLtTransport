@@ -141,9 +141,19 @@ const Footer = () => {
               <span className="contact-icon">☎️</span>
               <span>Landline: +97126271510</span>
             </div>
-            <div className="contact-item">
-              <span className="contact-icon">✉️</span>
-              <span>contact@sltservices.com</span>
+           <div className="contact-item">
+  <span className="contact-icon">✉️</span>
+
+  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+    <span>info@swiftliger.com</span>
+    <span>sales@swiftliger.com</span>
+    <span>careers@swiftliger.com</span>
+    <span>accounts@swiftliger.com</span>
+    <span>operations@swiftliger.com</span>
+  </div>
+
+
+
             </div>
             <div className="contact-item">
               <span className="contact-icon">📍</span>
