@@ -146,10 +146,10 @@ const Footer = () => {
 
   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
     <span>info@swiftliger.com</span>
-    <span>sales@swiftliger.com</span>
+    {/* <span>sales@swiftliger.com</span>
     <span>careers@swiftliger.com</span>
     <span>accounts@swiftliger.com</span>
-    <span>operations@swiftliger.com</span>
+    <span>operations@swiftliger.com</span> */}
   </div>
 
 
