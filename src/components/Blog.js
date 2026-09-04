@@ -10,7 +10,7 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("https://slttranportdatabse.onrender.com/api/blogs/all");
+      const res = await fetch("https://slttranportdatabse-elw1.onrender.com/api/blogs/all");
       const data = await res.json();
       const mapped = data.map(blog => ({
         id: blog.id,

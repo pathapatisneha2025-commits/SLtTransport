@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API = "https://slttranportdatabse.onrender.com/api/banners/all";
+const API = "https://slttranportdatabse-elw1.onrender.com/api/banners/all";
 
 const Banner = () => {
   const [banners, setBanners] = useState([]);

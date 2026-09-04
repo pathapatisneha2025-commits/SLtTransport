@@ -10,7 +10,7 @@ const BlogDetailPage = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`https://slttranportdatabse.onrender.com/api/blogs/${id}`);
+        const res = await fetch(`https://slttranportdatabse-elw1.onrender.com/api/blogs/${id}`);
         if (!res.ok) {
           throw new Error(`Error: ${res.status}`);
         }

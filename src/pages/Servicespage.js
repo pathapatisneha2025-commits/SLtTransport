@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const API = "https://slttranportdatabse.onrender.com/api/services/all";
+const API = "https://slttranportdatabse-elw1.onrender.com/api/services/all";
 
 const ServicesPage = () => {
   const [services, setServices] = useState([]);
